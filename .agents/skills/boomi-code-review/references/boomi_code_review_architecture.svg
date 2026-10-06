@@ -1,0 +1,371 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1400 950" width="1400" height="950" style="background:#0F172A; font-family:'Segoe UI', -apple-system, BlinkMacSystemFont, Roboto, sans-serif;">
+  <defs>
+    <!-- Gradients -->
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0F172A"/>
+      <stop offset="100%" stop-color="#1E293B"/>
+    </linearGradient>
+
+    <linearGradient id="blueCard" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1E3A8A" stop-opacity="0.7"/>
+      <stop offset="100%" stop-color="#172554" stop-opacity="0.9"/>
+    </linearGradient>
+
+    <linearGradient id="tealCard" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#134E4A" stop-opacity="0.7"/>
+      <stop offset="100%" stop-color="#042F2E" stop-opacity="0.9"/>
+    </linearGradient>
+
+    <linearGradient id="purpleCard" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#581C87" stop-opacity="0.7"/>
+      <stop offset="100%" stop-color="#3B0764" stop-opacity="0.9"/>
+    </linearGradient>
+
+    <linearGradient id="cyanBadge" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#06B6D4"/>
+      <stop offset="100%" stop-color="#3B82F6"/>
+    </linearGradient>
+
+    <linearGradient id="accentLine" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#38BDF8"/>
+      <stop offset="50%" stop-color="#818CF8"/>
+      <stop offset="100%" stop-color="#C084FC"/>
+    </linearGradient>
+
+    <!-- Filters / Shadows -->
+    <filter id="dropGlow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="8" stdDeviation="12" flood-color="#000000" flood-opacity="0.5"/>
+    </filter>
+
+    <!-- Marker / Arrows -->
+    <marker id="arrowCyan" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#38BDF8"/>
+    </marker>
+    <marker id="arrowEmerald" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#34D399"/>
+    </marker>
+    <marker id="arrowPurple" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#C084FC"/>
+    </marker>
+    <marker id="arrowAmber" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#FBBF24"/>
+    </marker>
+  </defs>
+
+  <!-- Outer Background -->
+  <rect width="1400" height="950" fill="url(#bgGrad)"/>
+  
+  <!-- Subtle Grid Pattern -->
+  <g opacity="0.08" stroke="#94A3B8" stroke-width="1">
+    <path d="M 0 150 L 1400 150 M 0 300 L 1400 300 M 0 450 L 1400 450 M 0 600 L 1400 600 M 0 750 L 1400 750" />
+    <path d="M 200 0 L 200 950 M 450 0 L 450 950 M 700 0 L 700 950 M 950 0 L 950 950 M 1200 0 L 1200 950" />
+  </g>
+
+  <!-- ==================== HEADER SECTION ==================== -->
+  <g transform="translate(60, 40)">
+    <rect x="0" y="0" width="1280" height="75" rx="12" fill="#1E293B" stroke="#334155" stroke-width="1.5" filter="url(#dropGlow)"/>
+    <rect x="0" y="72" width="1280" height="3" fill="url(#accentLine)"/>
+    
+    <!-- Title Badge -->
+    <rect x="25" y="18" width="145" height="28" rx="6" fill="url(#cyanBadge)"/>
+    <text x="97" y="37" fill="#FFFFFF" font-size="12" font-weight="700" text-anchor="middle" letter-spacing="1">ENTERPRISE ARCH</text>
+
+    <!-- Main Title -->
+    <text x="185" y="38" fill="#F8FAFC" font-size="20" font-weight="700">Autonomous Boomi Code Review &amp; Governance Architecture</text>
+    <text x="185" y="58" fill="#94A3B8" font-size="13">Continuous Quality Engineering • Security Guardrails • Zero-Defect Production Deployment</text>
+
+    <!-- Executive Metric Badges -->
+    <g transform="translate(930, 16)">
+      <rect x="0" y="0" width="105" height="42" rx="6" fill="#0F172A" stroke="#10B981" stroke-width="1"/>
+      <text x="52" y="18" fill="#10B981" font-size="11" font-weight="700" text-anchor="middle">&lt; 2 MINS</text>
+      <text x="52" y="34" fill="#64748B" font-size="10" text-anchor="middle">Review Cycle</text>
+
+      <rect x="115" y="0" width="105" height="42" rx="6" fill="#0F172A" stroke="#38BDF8" stroke-width="1"/>
+      <text x="167" y="18" fill="#38BDF8" font-size="11" font-weight="700" text-anchor="middle">100% AUDIT</text>
+      <text x="167" y="34" fill="#64748B" font-size="10" text-anchor="middle">SRV_ &amp; Policies</text>
+
+      <rect x="230" y="0" width="105" height="42" rx="6" fill="#0F172A" stroke="#A855F7" stroke-width="1"/>
+      <text x="282" y="18" fill="#A855F7" font-size="11" font-weight="700" text-anchor="middle">0 DEFECT</text>
+      <text x="282" y="34" fill="#64748B" font-size="10" text-anchor="middle">PROD Escape</text>
+    </g>
+  </g>
+
+  <!-- ==================== COLUMN 1: UPSTREAM / TRIGGERS ==================== -->
+  <g transform="translate(60, 140)">
+    <rect x="0" y="0" width="260" height="660" rx="14" fill="#131D31" stroke="#2563EB" stroke-width="1.5" stroke-dasharray="6,4" filter="url(#dropGlow)"/>
+    
+    <rect x="15" y="15" width="230" height="38" rx="8" fill="url(#blueCard)" stroke="#3B82F6" stroke-width="1"/>
+    <text x="130" y="39" fill="#93C5FD" font-size="13" font-weight="700" text-anchor="middle">1. UPSTREAM &amp; TRIGGERS</text>
+
+    <!-- Card 1: Boomi AtomSphere -->
+    <g transform="translate(15, 75)">
+      <rect x="0" y="0" width="230" height="110" rx="10" fill="#1E293B" stroke="#334155" stroke-width="1.2"/>
+      <rect x="12" y="12" width="36" height="36" rx="8" fill="#0284C7"/>
+      <text x="30" y="35" fill="#FFFFFF" font-size="16" text-anchor="middle">☁️</text>
+      <text x="58" y="27" fill="#F1F5F9" font-size="13" font-weight="700">Boomi AtomSphere</text>
+      <text x="58" y="44" fill="#38BDF8" font-size="11">Active-Development</text>
+      <text x="12" y="70" fill="#94A3B8" font-size="11">• Process XML &amp; Canvas AST</text>
+      <text x="12" y="88" fill="#94A3B8" font-size="11">• Maps, Connectors &amp; Profiles</text>
+      <text x="12" y="104" fill="#94A3B8" font-size="11">• Process Properties &amp; Ext.</text>
+    </g>
+
+    <!-- Card 2: Developer & CI/CD -->
+    <g transform="translate(15, 205)">
+      <rect x="0" y="0" width="230" height="100" rx="10" fill="#1E293B" stroke="#334155" stroke-width="1.2"/>
+      <rect x="12" y="12" width="36" height="36" rx="8" fill="#2563EB"/>
+      <text x="30" y="35" fill="#FFFFFF" font-size="16" text-anchor="middle">👨‍💻</text>
+      <text x="58" y="27" fill="#F1F5F9" font-size="13" font-weight="700">Dev &amp; CI/CD Pipeline</text>
+      <text x="58" y="44" fill="#60A5FA" font-size="11">Pull Request / Webhook</text>
+      <text x="12" y="72" fill="#94A3B8" font-size="11">• Git Push / Merge Trigger</text>
+      <text x="12" y="90" fill="#94A3B8" font-size="11">• Pre-Deployment Gate Check</text>
+    </g>
+
+    <!-- Card 3: Enterprise ITSM -->
+    <g transform="translate(15, 325)">
+      <rect x="0" y="0" width="230" height="100" rx="10" fill="#1E293B" stroke="#334155" stroke-width="1.2"/>
+      <rect x="12" y="12" width="36" height="36" rx="8" fill="#4F46E5"/>
+      <text x="30" y="35" fill="#FFFFFF" font-size="16" text-anchor="middle">🎫</text>
+      <text x="58" y="27" fill="#F1F5F9" font-size="13" font-weight="700">Enterprise ITSM</text>
+      <text x="58" y="44" fill="#818CF8" font-size="11">ServiceNow / Jira</text>
+      <text x="12" y="72" fill="#94A3B8" font-size="11">• Change Request (CR) Ticket</text>
+      <text x="12" y="90" fill="#94A3B8" font-size="11">• Traceability &amp; Approver Log</text>
+    </g>
+
+    <!-- Connector Info bottom -->
+    <g transform="translate(15, 450)">
+      <rect x="0" y="0" width="230" height="190" rx="10" fill="#0F172A" stroke="#1E293B" stroke-width="1.2"/>
+      <text x="115" y="28" fill="#38BDF8" font-size="12" font-weight="700" text-anchor="middle">⚡ Real-Time Ingestion API</text>
+      <path d="M 20 42 L 210 42" stroke="#334155" stroke-width="1"/>
+      <text x="15" y="65" fill="#CBD5E1" font-size="11">Automated payload extraction</text>
+      <text x="15" y="85" fill="#CBD5E1" font-size="11">without manual XML export.</text>
+      <text x="15" y="115" fill="#94A3B8" font-size="10">Supported Connectors:</text>
+      <text x="15" y="133" fill="#64748B" font-size="10">• REST / HTTP / SOAP</text>
+      <text x="15" y="150" fill="#64748B" font-size="10">• Database &amp; Database V2</text>
+      <text x="15" y="167" fill="#64748B" font-size="10">• SFTP, Kafka, Disk, JMS</text>
+    </g>
+  </g>
+
+  <!-- ==================== COLUMN 2: CORE REVIEW & AI ENGINE ==================== -->
+  <g transform="translate(350, 140)">
+    <rect x="0" y="0" width="670" height="660" rx="14" fill="#0C1E28" stroke="#0D9488" stroke-width="1.8" filter="url(#dropGlow)"/>
+    
+    <rect x="20" y="15" width="630" height="38" rx="8" fill="url(#tealCard)" stroke="#14B8A6" stroke-width="1"/>
+    <text x="335" y="39" fill="#5EEAD4" font-size="14" font-weight="700" text-anchor="middle">2. HYBRID INTELLIGENCE ENGINE (STATIC RULES + SEMANTIC AI)</text>
+
+    <!-- Sub-Section A: Deterministic Rule Matrix -->
+    <g transform="translate(20, 70)">
+      <rect x="0" y="0" width="300" height="340" rx="10" fill="#132330" stroke="#0F766E" stroke-width="1.2"/>
+      <text x="150" y="24" fill="#2DD4BF" font-size="12" font-weight="700" text-anchor="middle">⚙️ DETERMINISTIC POLICY ENFORCER</text>
+      <path d="M 15 35 L 285 35" stroke="#115E59" stroke-width="1"/>
+
+      <!-- Rule 1: Security -->
+      <rect x="12" y="45" width="276" height="60" rx="6" fill="#1E293B" stroke="#DC2626" stroke-width="1"/>
+      <text x="22" y="63" fill="#FCA5A5" font-size="11" font-weight="700">🔒 Database Service Account (SRV_)</text>
+      <text x="22" y="80" fill="#94A3B8" font-size="10">Blocks root/sa/personal users on DB &amp; DB V2</text>
+      <text x="22" y="95" fill="#EF4444" font-size="10" font-weight="600">[CRITICAL HARD GATE]</text>
+
+      <!-- Rule 2: Connection Optimization -->
+      <rect x="12" y="115" width="276" height="60" rx="6" fill="#1E293B" stroke="#D97706" stroke-width="1"/>
+      <text x="22" y="133" fill="#FCD34D" font-size="11" font-weight="700">🔌 Redundant Connection Deduplication</text>
+      <text x="22" y="150" fill="#94A3B8" font-size="10">Consolidates identical host/ports &amp; mixed types</text>
+      <text x="22" y="165" fill="#F59E0B" font-size="10" font-weight="600">[LICENSE OPTIMIZATION]</text>
+
+      <!-- Rule 3: Error Handling -->
+      <rect x="12" y="185" width="276" height="60" rx="6" fill="#1E293B" stroke="#3B82F6" stroke-width="1"/>
+      <text x="22" y="203" fill="#93C5FD" font-size="11" font-weight="700">🛡️ Try/Catch &amp; Dead-Lettering</text>
+      <text x="22" y="220" fill="#94A3B8" font-size="10">Guarantees catcherrors wrapping on all I/O</text>
+      <text x="22" y="235" fill="#60A5FA" font-size="10" font-weight="600">[ZERO SILENT FAILURES]</text>
+
+      <!-- Rule 4: Canvas Standards -->
+      <rect x="12" y="255" width="276" height="65" rx="6" fill="#1E293B" stroke="#10B981" stroke-width="1"/>
+      <text x="22" y="273" fill="#6EE7B7" font-size="11" font-weight="700">📝 Process Property Externalization</text>
+      <text x="22" y="290" fill="#94A3B8" font-size="10">Enforces dynamic properties in Ext. components</text>
+      <text x="22" y="307" fill="#34D399" font-size="10" font-weight="600">[CLEAN DEPLOYMENT]</text>
+    </g>
+
+    <!-- Sub-Section B: PROD Baseline & Drift Engine -->
+    <g transform="translate(340, 70)">
+      <rect x="0" y="0" width="310" height="340" rx="10" fill="#132330" stroke="#0F766E" stroke-width="1.2"/>
+      <text x="155" y="24" fill="#2DD4BF" font-size="12" font-weight="700" text-anchor="middle">🔍 PROD BASELINE DIFF &amp; DRIFT</text>
+      <path d="M 15 35 L 295 35" stroke="#115E59" stroke-width="1"/>
+
+      <rect x="15" y="48" width="280" height="75" rx="8" fill="#1E293B" stroke="#0D9488" stroke-width="1"/>
+      <text x="28" y="70" fill="#E2E8F0" font-size="12" font-weight="700">🗄️ PROD Golden Registry</text>
+      <text x="28" y="88" fill="#94A3B8" font-size="10">• Central registry of approved live endpoints</text>
+      <text x="28" y="104" fill="#94A3B8" font-size="10">• Environment Extension mapping schema</text>
+
+      <rect x="15" y="135" width="280" height="185" rx="8" fill="#1E293B" stroke="#0D9488" stroke-width="1"/>
+      <text x="28" y="157" fill="#E2E8F0" font-size="12" font-weight="700">⚡ Automated Drift Analyzer</text>
+      <text x="28" y="178" fill="#94A3B8" font-size="10">• Compares PR assets against PROD</text>
+      <text x="28" y="196" fill="#94A3B8" font-size="10">• Flags unauthorized new connection IDs</text>
+      <text x="28" y="214" fill="#94A3B8" font-size="10">• Validates schema changes in XML profiles</text>
+      
+      <rect x="25" y="235" width="260" height="65" rx="6" fill="#042F2E" stroke="#14B8A6" stroke-width="1"/>
+      <text x="35" y="255" fill="#5EEAD4" font-size="10" font-weight="700">PROD Safety Guarantee:</text>
+      <text x="35" y="272" fill="#CBD5E1" font-size="10">Prevents accidental breaking endpoint</text>
+      <text x="35" y="287" fill="#CBD5E1" font-size="10">overrides during deployment.</text>
+    </g>
+
+    <!-- Sub-Section C: Semantic AI Reasoning Agent -->
+    <g transform="translate(20, 425)">
+      <rect x="0" y="0" width="630" height="215" rx="10" fill="url(#purpleCard)" stroke="#9333EA" stroke-width="1.5"/>
+      <rect x="15" y="12" width="165" height="26" rx="6" fill="#6B21A8"/>
+      <text x="97" y="29" fill="#F3E8FF" font-size="11" font-weight="700" text-anchor="middle">🧠 BOOMI AI REASONING</text>
+      <text x="195" y="30" fill="#E9D5FF" font-size="12" font-weight="600">Deep Architectural Context &amp; Remediation Synthesis</text>
+
+      <!-- Box 1 -->
+      <g transform="translate(15, 50)">
+        <rect x="0" y="0" width="190" height="150" rx="8" fill="#1E1B4B" stroke="#6366F1" stroke-width="1"/>
+        <text x="95" y="24" fill="#A5B4FC" font-size="11" font-weight="700" text-anchor="middle">📚 RAG Standards DB</text>
+        <path d="M 10 32 L 180 32" stroke="#4338CA" stroke-width="1"/>
+        <text x="12" y="52" fill="#E2E8F0" font-size="10">• Psiog Integration Patterns</text>
+        <text x="12" y="70" fill="#E2E8F0" font-size="10">• High-Volume Batch Rules</text>
+        <text x="12" y="88" fill="#E2E8F0" font-size="10">• Sub-Process Architecture</text>
+        <text x="12" y="106" fill="#E2E8F0" font-size="10">• Heap / Memory Limits</text>
+        <text x="12" y="132" fill="#818CF8" font-size="9" font-style="italic">Vector Embeddings of Rules</text>
+      </g>
+
+      <!-- Box 2 -->
+      <g transform="translate(220, 50)">
+        <rect x="0" y="0" width="190" height="150" rx="8" fill="#1E1B4B" stroke="#A855F7" stroke-width="1"/>
+        <text x="95" y="24" fill="#D8B4FE" font-size="11" font-weight="700" text-anchor="middle">🔬 Semantic Analysis</text>
+        <path d="M 10 32 L 180 32" stroke="#7E22CE" stroke-width="1"/>
+        <text x="12" y="52" fill="#E2E8F0" font-size="10">• Flow Bottleneck Detection</text>
+        <text x="12" y="70" fill="#E2E8F0" font-size="10">• Unbatched Loop Traps</text>
+        <text x="12" y="88" fill="#E2E8F0" font-size="10">• Cache Memory Leak Checks</text>
+        <text x="12" y="106" fill="#E2E8F0" font-size="10">• Threading &amp; Concurrency</text>
+        <text x="12" y="132" fill="#C084FC" font-size="9" font-style="italic">Execution Topology Model</text>
+      </g>
+
+      <!-- Box 3 -->
+      <g transform="translate(425, 50)">
+        <rect x="0" y="0" width="190" height="150" rx="8" fill="#1E1B4B" stroke="#EC4899" stroke-width="1"/>
+        <text x="95" y="24" fill="#F472B6" font-size="11" font-weight="700" text-anchor="middle">🛠️ Auto-Fix Generator</text>
+        <path d="M 10 32 L 180 32" stroke="#BE185D" stroke-width="1"/>
+        <text x="12" y="52" fill="#E2E8F0" font-size="10">• XML Diff Patches</text>
+        <text x="12" y="70" fill="#E2E8F0" font-size="10">• Missing Try/Catch code</text>
+        <text x="12" y="88" fill="#E2E8F0" font-size="10">• Auto-labelled shapes</text>
+        <text x="12" y="106" fill="#E2E8F0" font-size="10">• Step-by-step guidance</text>
+        <text x="12" y="132" fill="#F472B6" font-size="9" font-style="italic">Instant Developer Diff</text>
+      </g>
+    </g>
+  </g>
+
+  <!-- ==================== COLUMN 3: DOWNSTREAM & GOVERNANCE ==================== -->
+  <g transform="translate(1040, 140)">
+    <rect x="0" y="0" width="300" height="660" rx="14" fill="#1E1528" stroke="#A855F7" stroke-width="1.5" stroke-dasharray="6,4" filter="url(#dropGlow)"/>
+    
+    <rect x="15" y="15" width="270" height="38" rx="8" fill="url(#purpleCard)" stroke="#C084FC" stroke-width="1"/>
+    <text x="150" y="39" fill="#E9D5FF" font-size="13" font-weight="700" text-anchor="middle">3. GOVERNANCE &amp; C-LEVEL VALUE</text>
+
+    <!-- Card 1: Review Sign-off Report -->
+    <g transform="translate(15, 75)">
+      <rect x="0" y="0" width="270" height="120" rx="10" fill="#1E293B" stroke="#334155" stroke-width="1.2"/>
+      <rect x="12" y="12" width="36" height="36" rx="8" fill="#7C3AED"/>
+      <text x="30" y="35" fill="#FFFFFF" font-size="16" text-anchor="middle">📄</text>
+      <text x="58" y="27" fill="#F1F5F9" font-size="13" font-weight="700">Signed Audit Report</text>
+      <text x="58" y="44" fill="#C084FC" font-size="11">Standardized Decision Gate</text>
+      <text x="12" y="70" fill="#94A3B8" font-size="11">• Status: Approved / Rework</text>
+      <text x="12" y="88" fill="#94A3B8" font-size="11">• Policy Compliance Scorecard</text>
+      <text x="12" y="106" fill="#94A3B8" font-size="11">• Attached to ServiceNow / Jira</text>
+    </g>
+
+    <!-- Card 2: Release Gate & Sync -->
+    <g transform="translate(15, 210)">
+      <rect x="0" y="0" width="270" height="115" rx="10" fill="#1E293B" stroke="#334155" stroke-width="1.2"/>
+      <rect x="12" y="12" width="36" height="36" rx="8" fill="#059669"/>
+      <text x="30" y="35" fill="#FFFFFF" font-size="16" text-anchor="middle">🚦</text>
+      <text x="58" y="27" fill="#F1F5F9" font-size="13" font-weight="700">Automated Release Gate</text>
+      <text x="58" y="44" fill="#34D399" font-size="11">CI/CD Pipeline Gating</text>
+      <text x="12" y="70" fill="#94A3B8" font-size="11">• Auto-unblocks QA / PROD build</text>
+      <text x="12" y="88" fill="#94A3B8" font-size="11">• Zero manual review bottleneck</text>
+      <text x="12" y="106" fill="#94A3B8" font-size="11">• Full regulatory audit trail</text>
+    </g>
+
+    <!-- Card 3: Executive Dashboard & ROI -->
+    <g transform="translate(15, 340)">
+      <rect x="0" y="0" width="270" height="295" rx="10" fill="#0F172A" stroke="#475569" stroke-width="1.2"/>
+      <text x="135" y="28" fill="#FBBF24" font-size="13" font-weight="700" text-anchor="middle">📊 CEO / CTO Impact Dashboard</text>
+      <path d="M 15 38 L 255 38" stroke="#334155" stroke-width="1"/>
+
+      <!-- KPI 1 -->
+      <g transform="translate(15, 50)">
+        <rect x="0" y="0" width="240" height="42" rx="6" fill="#1E293B" stroke="#10B981" stroke-width="1"/>
+        <text x="12" y="18" fill="#6EE7B7" font-size="11" font-weight="700">💰 30% Connector Cost Reduction</text>
+        <text x="12" y="33" fill="#94A3B8" font-size="10">Elimination of redundant Boomi licenses</text>
+      </g>
+
+      <!-- KPI 2 -->
+      <g transform="translate(15, 100)">
+        <rect x="0" y="0" width="240" height="42" rx="6" fill="#1E293B" stroke="#38BDF8" stroke-width="1"/>
+        <text x="12" y="18" fill="#7DD3FC" font-size="11" font-weight="700">⚡ 95% Faster Review Turnaround</text>
+        <text x="12" y="33" fill="#94A3B8" font-size="10">From 48 hours down to under 2 minutes</text>
+      </g>
+
+      <!-- KPI 3 -->
+      <g transform="translate(15, 150)">
+        <rect x="0" y="0" width="240" height="42" rx="6" fill="#1E293B" stroke="#F43F5E" stroke-width="1"/>
+        <text x="12" y="18" fill="#FDA4AF" font-size="11" font-weight="700">🛡️ Zero Security &amp; Credential Escapes</text>
+        <text x="12" y="33" fill="#94A3B8" font-size="10">100% enforcement of SRV_ and PII shields</text>
+      </g>
+
+      <!-- KPI 4 -->
+      <g transform="translate(15, 200)">
+        <rect x="0" y="0" width="240" height="42" rx="6" fill="#1E293B" stroke="#A855F7" stroke-width="1"/>
+        <text x="12" y="18" fill="#D8B4FE" font-size="11" font-weight="700">🎯 Zero Downtime Regressions</text>
+        <text x="12" y="33" fill="#94A3B8" font-size="10">PROD baseline diff prevents breaking changes</text>
+      </g>
+
+      <text x="135" y="272" fill="#64748B" font-size="10" text-anchor="middle" font-style="italic">Psiog Integrations Automated Standards</text>
+    </g>
+  </g>
+
+  <!-- ==================== FLOW CONNECTORS / DATA PATHWAYS ==================== -->
+  <g fill="none" stroke-width="2.2">
+    <!-- Path 1: Ingestion to Engine -->
+    <path d="M 320 250 C 335 250, 335 250, 350 250" stroke="#38BDF8" marker-end="url(#arrowCyan)"/>
+    <path d="M 320 375 C 335 375, 335 300, 350 300" stroke="#38BDF8" marker-end="url(#arrowCyan)"/>
+
+    <!-- Path 2: Engine to Governance Output -->
+    <path d="M 1020 260 C 1030 260, 1030 260, 1040 260" stroke="#C084FC" marker-end="url(#arrowPurple)"/>
+    <path d="M 1020 530 C 1030 530, 1030 395, 1040 395" stroke="#FBBF24" marker-end="url(#arrowAmber)"/>
+
+    <!-- Path 3: Developer Remediation Loop (Feedback to Developer) -->
+    <path d="M 1040 215 C 680 870, 360 870, 190 310" stroke="#34D399" stroke-width="2" stroke-dasharray="6,4" marker-end="url(#arrowEmerald)"/>
+  </g>
+
+  <!-- Flow Legend on Bottom Left -->
+  <g transform="translate(60, 825)">
+    <rect x="0" y="0" width="1280" height="85" rx="10" fill="#0F172A" stroke="#334155" stroke-width="1.2"/>
+    <text x="25" y="26" fill="#F8FAFC" font-size="12" font-weight="700">ARCHITECTURE FLOW LEGEND:</text>
+    
+    <!-- Legend Items -->
+    <g transform="translate(25, 42)">
+      <!-- Item 1 -->
+      <line x1="0" y1="12" x2="30" y2="12" stroke="#38BDF8" stroke-width="3"/>
+      <circle cx="35" cy="12" r="3" fill="#38BDF8"/>
+      <text x="45" y="16" fill="#CBD5E1" font-size="11">1. Component XML &amp; Ingestion Flow</text>
+
+      <!-- Item 2 -->
+      <g transform="translate(290, 0)">
+        <line x1="0" y1="12" x2="30" y2="12" stroke="#2DD4BF" stroke-width="3"/>
+        <circle cx="35" cy="12" r="3" fill="#2DD4BF"/>
+        <text x="45" y="16" fill="#CBD5E1" font-size="11">2. Static Policy &amp; PROD Baseline Validation</text>
+      </g>
+
+      <!-- Item 3 -->
+      <g transform="translate(620, 0)">
+        <line x1="0" y1="12" x2="30" y2="12" stroke="#C084FC" stroke-width="3"/>
+        <circle cx="35" cy="12" r="3" fill="#C084FC"/>
+        <text x="45" y="16" fill="#CBD5E1" font-size="11">3. Semantic AI Reasoning &amp; Remediation Synthesis</text>
+      </g>
+
+      <!-- Item 4 -->
+      <g transform="translate(970, 0)">
+        <line x1="0" y1="12" x2="30" y2="12" stroke="#34D399" stroke-width="2" stroke-dasharray="4,4"/>
+        <circle cx="35" cy="12" r="3" fill="#34D399"/>
+        <text x="45" y="16" fill="#CBD5E1" font-size="11">4. Developer Feedback &amp; Release Gate</text>
+      </g>
+    </g>
+  </g>
+</svg>

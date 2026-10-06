@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bns:Component branchId="main" xmlns:bns="http://api.platform.boomi.com/" 
+               xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+               componentId="d3adf534-4306-49e9-806d-e2b3dceb26c5"
+               name="Boomi Platform API Connection"
+               type="connector-settings"
+               subType="officialboomi-X3979C-rest-prod"
+               folderId="Rjo4NzM3Njkx">
+  <bns:encryptedValues/>
+  <bns:description>built with boomi-companion vunknown</bns:description><bns:object>
+    <GenericConnectionConfig>
+      <field id="url" type="string" value="https://api.boomi.com"/>
+      <field id="auth" type="string" value="NONE"/>
+      <field id="connectTimeout" type="integer" value="30000"/>
+      <field id="readTimeout" type="integer" value="60000"/>
+      <field id="cookieScope" type="string" value="GLOBAL"/>
+      <field id="enableConnectionPooling" type="boolean" value="false"/>
+      <field id="domain" type="string" value=""/>
+      <field id="workstation" type="string" value=""/>
+      <field id="customAuthCredentials" type="password" value=""/>
+      <field id="awsAccessKey" type="string" value=""/>
+      <field id="awsSecretKey" type="password" value=""/>
+      <field id="awsService" type="string" value=""/>
+      <field id="customAwsService" type="string" value=""/>
+      <field id="awsRegion" type="string" value=""/>
+      <field id="customAwsRegion" type="string" value=""/>
+      <field id="awsProfileArn" type="string" value=""/>
+      <field id="awsRoleArn" type="string" value=""/>
+      <field id="awsTrustAnchorArn" type="string" value=""/>
+      <field id="awsRolesAnywhereRegion" type="string" value=""/>
+      <field id="awsRolesAnywhereCustomRegion" type="string" value=""/>
+      <field id="awsSessionName" type="string" value=""/>
+      <field id="awsDuration" type="integer" value=""/>
+      <field id="awsPublicCertificate" type="publiccertificate" value=""/>
+      <field id="awsPrivateKey" type="privatecertificate" value=""/>
+      <field id="oauthContext" type="oauth">
+        <OAuth2Config grantType="code">
+          <credentials clientId=""/>
+          <authorizationTokenEndpoint url="">
+            <sslOptions/>
+          </authorizationTokenEndpoint>
+          <authorizationParameters/>
+          <accessTokenEndpoint url="">
+            <sslOptions/>
+          </accessTokenEndpoint>
+          <accessTokenParameters/>
+          <scope/>
+          <jwtParameters>
+            <expiration>0</expiration>
+          </jwtParameters>
+        </OAuth2Config>
+      </field>
+      <field id="privateCertificate" type="privatecertificate"/>
+      <field id="publicCertificate" type="publiccertificate"/>
+      <field id="maxTotal" type="integer" value=""/>
+      <field id="idleTimeout" type="integer" value=""/>
+    </GenericConnectionConfig>
+  </bns:object>
+</bns:Component>

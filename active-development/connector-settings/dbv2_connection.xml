@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bns:Component branchId="main" xmlns:bns="http://api.platform.boomi.com/"
+               componentId="fc6e49c1-73f5-42db-8405-412000ea9e0c"
+               name="MySQL_DB_Connection"
+               type="connector-settings"
+               subType="officialboomi-X3979C-dbv2da-prod"
+               folderId="Rjo4NzIwMDU2">
+  <bns:encryptedValues/>
+  <bns:description>built with boomi-companion vunknown</bns:description><bns:object>
+    <GenericConnectionConfig>
+      <field id="url" type="string" value="jdbc:mysql://localhost:3306/mydb"/>
+      <field id="className" type="string" value="com.mysql.jdbc.Driver"/>
+      <field id="username" type="string" value="dbuser"/>
+      <field id="password" type="password" value="dbpassword"/>
+      <field id="enablePooling" type="boolean" value="false"/>
+    </GenericConnectionConfig>
+  </bns:object>
+</bns:Component>

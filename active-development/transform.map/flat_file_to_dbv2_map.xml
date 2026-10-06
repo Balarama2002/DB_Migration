@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bns:Component branchId="main" xmlns:bns="http://api.platform.boomi.com/" 
+               folderId="Rjo4NzIwMDU2" 
+               name="FlatFile_To_DBV2_Map" 
+               type="transform.map" componentId="95ce85b9-acae-489c-b0a2-333cc6747331">
+  <bns:description>built with boomi-companion vunknown</bns:description><bns:object>
+    <Map fromProfile="81b39353-5811-4850-870b-9d69ce102c82" toProfile="a5f3ef79-899d-43a8-99eb-d3ea958c9447">
+      <Mappings>
+        <Mapping fromKey="3" fromType="profile" toKey="3" toType="profile"/>
+        <Mapping fromKey="4" fromType="profile" toKey="4" toType="profile"/>
+        <Mapping fromKey="5" fromType="profile" toKey="5" toType="profile"/>
+        <Mapping fromKey="6" fromType="profile" toKey="6" toType="profile"/>
+      </Mappings>
+      <Functions/>
+      <Defaults/>
+      <DocumentCacheJoins/>
+    </Map>
+  </bns:object>
+</bns:Component>

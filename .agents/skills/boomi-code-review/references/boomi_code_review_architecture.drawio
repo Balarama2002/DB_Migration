@@ -1,0 +1,166 @@
+<mxfile host="app.diagrams.net" modified="2026-09-14T15:05:00.000Z" agent="Antigravity" version="21.0.0" type="device">
+  <diagram id="boomi-code-review-arch" name="Boomi Code Review Architecture">
+    <mxGraphModel dx="1422" dy="800" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1600" pageHeight="1000" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+
+        <!-- HEADER BANNER -->
+        <mxCell id="header" value="&lt;b style=&quot;font-size: 18px;&quot;&gt;Autonomous Boomi Code Review &amp;amp; Governance Architecture&lt;/b&gt;&lt;br/&gt;&lt;span style=&quot;font-size: 12px; color: #94a3b8;&quot;&gt;Psiog Enterprise Integration Standards • Continuous Security Guardrails • Zero-Defect Production Deployment&lt;/span&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#1e293b;strokeColor=#334155;fontColor=#f8fafc;align=left;spacingLeft=25;" vertex="1" parent="1">
+          <mxGeometry x="40" y="30" width="1320" height="70" as="geometry" />
+        </mxCell>
+
+        <!-- KPI 1 -->
+        <mxCell id="kpi1" value="&lt;b style=&quot;color:#10b981; font-size:14px;&quot;&gt;&amp;lt; 2 MINS&lt;/b&gt;&lt;br/&gt;&lt;span style=&quot;font-size:10px; color:#94a3b8;&quot;&gt;Review Turnaround&lt;/span&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#0f172a;strokeColor=#10b981;align=center;" vertex="1" parent="1">
+          <mxGeometry x="1000" y="42" width="100" height="46" as="geometry" />
+        </mxCell>
+
+        <!-- KPI 2 -->
+        <mxCell id="kpi2" value="&lt;b style=&quot;color:#38bdf8; font-size:14px;&quot;&gt;100% AUDIT&lt;/b&gt;&lt;br/&gt;&lt;span style=&quot;font-size:10px; color:#94a3b8;&quot;&gt;SRV_ &amp;amp; Security&lt;/span&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#0f172a;strokeColor=#38bdf8;align=center;" vertex="1" parent="1">
+          <mxGeometry x="1115" y="42" width="100" height="46" as="geometry" />
+        </mxCell>
+
+        <!-- KPI 3 -->
+        <mxCell id="kpi3" value="&lt;b style=&quot;color:#c084fc; font-size:14px;&quot;&gt;0 ESCAPES&lt;/b&gt;&lt;br/&gt;&lt;span style=&quot;font-size:10px; color:#94a3b8;&quot;&gt;PROD Regressions&lt;/span&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#0f172a;strokeColor=#c084fc;align=center;" vertex="1" parent="1">
+          <mxGeometry x="1230" y="42" width="110" height="46" as="geometry" />
+        </mxCell>
+
+        <!-- ==================== CONTAINER 1: UPSTREAM ECOSYSTEM ==================== -->
+        <mxCell id="c1" value="1. UPSTREAM DEVELOPMENT &amp;amp; TRIGGERS" style="swimlane;whiteSpace=wrap;html=1;fillColor=#131d31;strokeColor=#2563eb;fontColor=#93c5fd;fontStyle=1;startSize=35;rounded=1;arcSize=4;dashed=1;" vertex="1" parent="1">
+          <mxGeometry x="40" y="120" width="270" height="660" as="geometry" />
+        </mxCell>
+
+        <mxCell id="node_atomsphere" value="&lt;b style=&quot;color:#38bdf8; font-size:13px;&quot;&gt;☁️ Boomi AtomSphere&lt;/b&gt;&lt;br/&gt;&lt;span style=&quot;font-size:10px; color:#94a3b8;&quot;&gt;Active Development Workspace&lt;br/&gt;• Component XML &amp;amp; Process AST&lt;br/&gt;• Maps, Connectors, Profiles&lt;br/&gt;• Process Properties &amp;amp; Ext.&lt;/span&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#1e293b;strokeColor=#334155;fontColor=#ffffff;align=left;spacingLeft=15;" vertex="1" parent="c1">
+          <mxGeometry x="15" y="50" width="240" height="110" as="geometry" />
+        </mxCell>
+
+        <mxCell id="node_dev" value="&lt;b style=&quot;color:#60a5fa; font-size:13px;&quot;&gt;👨‍💻 Boomi Developer / CI/CD&lt;/b&gt;&lt;br/&gt;&lt;span style=&quot;font-size:10px; color:#94a3b8;&quot;&gt;Pull Request &amp;amp; Git Pipeline&lt;br/&gt;• Git Commit / Merge Webhook&lt;br/&gt;• Pre-Deployment Verification&lt;/span&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#1e293b;strokeColor=#334155;fontColor=#ffffff;align=left;spacingLeft=15;" vertex="1" parent="c1">
+          <mxGeometry x="15" y="180" width="240" height="95" as="geometry" />
+        </mxCell>
+
+        <mxCell id="node_itsm" value="&lt;b style=&quot;color:#818cf8; font-size:13px;&quot;&gt;📋 Enterprise ITSM&lt;/b&gt;&lt;br/&gt;&lt;span style=&quot;font-size:10px; color:#94a3b8;&quot;&gt;ServiceNow / Jira / Azure DevOps&lt;br/&gt;• Change Request (CR) Ticket&lt;br/&gt;• Approver &amp;amp; Governance Chain&lt;/span&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#1e293b;strokeColor=#334155;fontColor=#ffffff;align=left;spacingLeft=15;" vertex="1" parent="c1">
+          <mxGeometry x="15" y="295" width="240" height="95" as="geometry" />
+        </mxCell>
+
+        <mxCell id="node_connectors_box" value="&lt;b style=&quot;color:#38bdf8;&quot;&gt;⚡ Supported Protocols&lt;/b&gt;&lt;br/&gt;&lt;span style=&quot;font-size:10px; color:#cbd5e1;&quot;&gt;• REST / HTTP / SOAP Services&lt;br/&gt;• Database &amp;amp; Database V2&lt;br/&gt;• Kafka, Disk, SFTP, JMS&lt;br/&gt;• NetSuite, SAP, Salesforce&lt;/span&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#0f172a;strokeColor=#1e293b;fontColor=#cbd5e1;align=center;" vertex="1" parent="c1">
+          <mxGeometry x="15" y="410" width="240" height="230" as="geometry" />
+        </mxCell>
+
+        <!-- ==================== CONTAINER 2: HYBRID REVIEW CORE ==================== -->
+        <mxCell id="c2" value="2. HYBRID INTELLIGENCE CODE REVIEW ENGINE (RULES + AI)" style="swimlane;whiteSpace=wrap;html=1;fillColor=#0c1e28;strokeColor=#0d9488;fontColor=#5eead4;fontStyle=1;startSize=35;rounded=1;arcSize=4;" vertex="1" parent="1">
+          <mxGeometry x="340" y="120" width="670" height="660" as="geometry" />
+        </mxCell>
+
+        <!-- STATIC RULES BOX -->
+        <mxCell id="box_rules" value="⚙️ DETERMINISTIC POLICY ENFORCER" style="swimlane;whiteSpace=wrap;html=1;fillColor=#132330;strokeColor=#0f766e;fontColor=#2dd4bf;fontStyle=1;startSize=28;rounded=1;" vertex="1" parent="c2">
+          <mxGeometry x="15" y="45" width="310" height="340" as="geometry" />
+        </mxCell>
+
+        <mxCell id="r1" value="&lt;b style=&quot;color:#fca5a5;&quot;&gt;🔒 DB Service Account (SRV_)&lt;/b&gt;&lt;br/&gt;&lt;span style=&quot;font-size:10px; color:#94a3b8;&quot;&gt;Rejects personal, sa, root usernames on DB/DB V2&lt;br/&gt;&lt;b style=&quot;color:#ef4444;&quot;&gt;[CRITICAL HARD GATE]&lt;/b&gt;&lt;/span&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#1e293b;strokeColor=#dc2626;align=left;spacingLeft=10;" vertex="1" parent="box_rules">
+          <mxGeometry x="10" y="38" width="290" height="60" as="geometry" />
+        </mxCell>
+
+        <mxCell id="r2" value="&lt;b style=&quot;color:#fcd34d;&quot;&gt;🔌 Redundant Connection Optimizer&lt;/b&gt;&lt;br/&gt;&lt;span style=&quot;font-size:10px; color:#94a3b8;&quot;&gt;Consolidates duplicate endpoints &amp;amp; mixed protocols&lt;br/&gt;&lt;b style=&quot;color:#f59e0b;&quot;&gt;[LICENSE SAVINGS]&lt;/b&gt;&lt;/span&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#1e293b;strokeColor=#d97706;align=left;spacingLeft=10;" vertex="1" parent="box_rules">
+          <mxGeometry x="10" y="108" width="290" height="60" as="geometry" />
+        </mxCell>
+
+        <mxCell id="r3" value="&lt;b style=&quot;color:#93c5fd;&quot;&gt;🛡️ Try/Catch &amp;amp; Dead-Lettering&lt;/b&gt;&lt;br/&gt;&lt;span style=&quot;font-size:10px; color:#94a3b8;&quot;&gt;Wraps failure points; enforces error logging &amp;amp; alert&lt;br/&gt;&lt;b style=&quot;color:#60a5fa;&quot;&gt;[ZERO CRASHES]&lt;/b&gt;&lt;/span&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#1e293b;strokeColor=#3b82f6;align=left;spacingLeft=10;" vertex="1" parent="box_rules">
+          <mxGeometry x="10" y="178" width="290" height="60" as="geometry" />
+        </mxCell>
+
+        <mxCell id="r4" value="&lt;b style=&quot;color:#6ee7b7;&quot;&gt;📝 Process Property Externalization&lt;/b&gt;&lt;br/&gt;&lt;span style=&quot;font-size:10px; color:#94a3b8;&quot;&gt;Ensures dynamic values in Environment Extensions&lt;br/&gt;&lt;b style=&quot;color:#34d399;&quot;&gt;[CLEAN DEPLOYMENT]&lt;/b&gt;&lt;/span&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#1e293b;strokeColor=#10b981;align=left;spacingLeft=10;" vertex="1" parent="box_rules">
+          <mxGeometry x="10" y="248" width="290" height="60" as="geometry" />
+        </mxCell>
+
+        <!-- PROD DRIFT BOX -->
+        <mxCell id="box_drift" value="🔍 PROD BASELINE DIFF &amp;amp; DRIFT" style="swimlane;whiteSpace=wrap;html=1;fillColor=#132330;strokeColor=#0f766e;fontColor=#2dd4bf;fontStyle=1;startSize=28;rounded=1;" vertex="1" parent="c2">
+          <mxGeometry x="340" y="45" width="315" height="340" as="geometry" />
+        </mxCell>
+
+        <mxCell id="prod_registry" value="&lt;b style=&quot;color:#e2e8f0;&quot;&gt;🗄️ PROD Golden Baseline Registry&lt;/b&gt;&lt;br/&gt;&lt;span style=&quot;font-size:10px; color:#94a3b8;&quot;&gt;• Central verified connection inventory&lt;br/&gt;• Production endpoint configurations&lt;/span&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#1e293b;strokeColor=#0d9488;align=left;spacingLeft=10;" vertex="1" parent="box_drift">
+          <mxGeometry x="12" y="38" width="290" height="65" as="geometry" />
+        </mxCell>
+
+        <mxCell id="drift_engine" value="&lt;b style=&quot;color:#e2e8f0;&quot;&gt;⚡ Automated Drift Analyzer&lt;/b&gt;&lt;br/&gt;&lt;span style=&quot;font-size:10px; color:#94a3b8;&quot;&gt;• Diffs PR connection assets vs PROD baseline&lt;br/&gt;• Highlights new unapproved endpoints&lt;br/&gt;• Validates XML profile schema integrity&lt;/span&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#1e293b;strokeColor=#0d9488;align=left;spacingLeft=10;" vertex="1" parent="box_drift">
+          <mxGeometry x="12" y="115" width="290" height="90" as="geometry" />
+        </mxCell>
+
+        <mxCell id="drift_banner" value="&lt;b style=&quot;color:#5eead4;&quot;&gt;PROD Safety Guarantee:&lt;/b&gt;&lt;br/&gt;&lt;span style=&quot;font-size:10px; color:#cbd5e1;&quot;&gt;Blocks accidental breaking changes and unauthorized external endpoints before deployment.&lt;/span&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#042f2e;strokeColor=#14b8a6;align=center;" vertex="1" parent="box_drift">
+          <mxGeometry x="12" y="220" width="290" height="88" as="geometry" />
+        </mxCell>
+
+        <!-- AI REASONING BOX -->
+        <mxCell id="box_ai" value="🧠 BOOMI SEMANTIC AI REASONING &amp;amp; REMEDIATION GENERATOR" style="swimlane;whiteSpace=wrap;html=1;fillColor=#2e1065;strokeColor=#9333ea;fontColor=#e9d5ff;fontStyle=1;startSize=28;rounded=1;" vertex="1" parent="c2">
+          <mxGeometry x="15" y="400" width="640" height="240" as="geometry" />
+        </mxCell>
+
+        <mxCell id="ai1" value="&lt;b style=&quot;color:#a5b4fc; font-size:11px;&quot;&gt;📚 RAG Best Practices DB&lt;/b&gt;&lt;br/&gt;&lt;span style=&quot;font-size:9px; color:#e2e8f0;&quot;&gt;• Psiog Design Patterns&lt;br/&gt;• High-Volume Batching&lt;br/&gt;• Sub-Process Rules&lt;br/&gt;• Heap / Memory Limits&lt;/span&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#1e1b4b;strokeColor=#6366f1;align=left;spacingLeft=10;" vertex="1" parent="box_ai">
+          <mxGeometry x="15" y="40" width="190" height="180" as="geometry" />
+        </mxCell>
+
+        <mxCell id="ai2" value="&lt;b style=&quot;color:#d8b4fe; font-size:11px;&quot;&gt;🔬 Semantic Logic Analyzer&lt;/b&gt;&lt;br/&gt;&lt;span style=&quot;font-size:9px; color:#e2e8f0;&quot;&gt;• Flow Bottleneck Analysis&lt;br/&gt;• Unbatched Loop Traps&lt;br/&gt;• Cache Memory Leaks&lt;br/&gt;• Concurrency &amp;amp; Locks&lt;/span&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#1e1b4b;strokeColor=#a855f7;align=left;spacingLeft=10;" vertex="1" parent="box_ai">
+          <mxGeometry x="225" y="40" width="190" height="180" as="geometry" />
+        </mxCell>
+
+        <mxCell id="ai3" value="&lt;b style=&quot;color:#f472b6; font-size:11px;&quot;&gt;🛠️ Auto-Fix Synthesizer&lt;/b&gt;&lt;br/&gt;&lt;span style=&quot;font-size:9px; color:#e2e8f0;&quot;&gt;• Synthesizes XML Patches&lt;br/&gt;• Fixes Missing Try/Catch&lt;br/&gt;• Labels Canvas Shapes&lt;br/&gt;• Step-by-Step Guidance&lt;/span&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#1e1b4b;strokeColor=#ec4899;align=left;spacingLeft=10;" vertex="1" parent="box_ai">
+          <mxGeometry x="435" y="40" width="190" height="180" as="geometry" />
+        </mxCell>
+
+        <!-- ==================== CONTAINER 3: GOVERNANCE & C-LEVEL DASHBOARD ==================== -->
+        <mxCell id="c3" value="3. GOVERNANCE &amp;amp; C-LEVEL VALUE" style="swimlane;whiteSpace=wrap;html=1;fillColor=#1e1528;strokeColor=#a855f7;fontColor=#e9d5ff;fontStyle=1;startSize=35;rounded=1;arcSize=4;dashed=1;" vertex="1" parent="1">
+          <mxGeometry x="1040" y="120" width="320" height="660" as="geometry" />
+        </mxCell>
+
+        <mxCell id="out_report" value="&lt;b style=&quot;color:#c084fc; font-size:13px;&quot;&gt;📄 Signed Audit Report&lt;/b&gt;&lt;br/&gt;&lt;span style=&quot;font-size:10px; color:#94a3b8;&quot;&gt;Decision Gate &amp;amp; Compliance Log&lt;br/&gt;• Verdict: Approved / Conditions / Rework&lt;br/&gt;• Attached directly to ServiceNow / Jira&lt;/span&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#1e293b;strokeColor=#7c3aed;align=left;spacingLeft=15;" vertex="1" parent="c3">
+          <mxGeometry x="15" y="50" width="290" height="90" as="geometry" />
+        </mxCell>
+
+        <mxCell id="out_gate" value="&lt;b style=&quot;color:#34d399; font-size:13px;&quot;&gt;🚦 Automated Release Gate&lt;/b&gt;&lt;br/&gt;&lt;span style=&quot;font-size:10px; color:#94a3b8;&quot;&gt;CI/CD Deployment Gatekeeper&lt;br/&gt;• Unblocks QA / PROD build on sign-off&lt;br/&gt;• Zero human review waiting time&lt;/span&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#1e293b;strokeColor=#059669;align=left;spacingLeft=15;" vertex="1" parent="c3">
+          <mxGeometry x="15" y="155" width="290" height="90" as="geometry" />
+        </mxCell>
+
+        <mxCell id="box_kpis" value="📊 CEO &amp;amp; CTO IMPACT SCORECARD" style="swimlane;whiteSpace=wrap;html=1;fillColor=#0f172a;strokeColor=#475569;fontColor=#fbbf24;fontStyle=1;startSize=26;rounded=1;" vertex="1" parent="c3">
+          <mxGeometry x="15" y="260" width="290" height="380" as="geometry" />
+        </mxCell>
+
+        <mxCell id="kpi_item1" value="&lt;b style=&quot;color:#6ee7b7;&quot;&gt;💰 30% Connector Cost Savings&lt;/b&gt;&lt;br/&gt;&lt;span style=&quot;font-size:9px; color:#94a3b8;&quot;&gt;Eliminates redundant Boomi connection licenses.&lt;/span&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#1e293b;strokeColor=#10b981;align=left;spacingLeft=10;" vertex="1" parent="box_kpis">
+          <mxGeometry x="10" y="38" width="270" height="50" as="geometry" />
+        </mxCell>
+
+        <mxCell id="kpi_item2" value="&lt;b style=&quot;color:#7dd3fc;&quot;&gt;⚡ 95% Faster Review Turnaround&lt;/b&gt;&lt;br/&gt;&lt;span style=&quot;font-size:9px; color:#94a3b8;&quot;&gt;Slashes review cycles from 48h to &amp;lt; 2 minutes.&lt;/span&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#1e293b;strokeColor=#38bdf8;align=left;spacingLeft=10;" vertex="1" parent="box_kpis">
+          <mxGeometry x="10" y="98" width="270" height="50" as="geometry" />
+        </mxCell>
+
+        <mxCell id="kpi_item3" value="&lt;b style=&quot;color:#fda4af;&quot;&gt;🛡️ 100% Security &amp;amp; PII Guardrails&lt;/b&gt;&lt;br/&gt;&lt;span style=&quot;font-size:9px; color:#94a3b8;&quot;&gt;Guaranteed SRV_ user accounts &amp;amp; secret masking.&lt;/span&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#1e293b;strokeColor=#f43f5e;align=left;spacingLeft=10;" vertex="1" parent="box_kpis">
+          <mxGeometry x="10" y="158" width="270" height="50" as="geometry" />
+        </mxCell>
+
+        <mxCell id="kpi_item4" value="&lt;b style=&quot;color:#d8b4fe;&quot;&gt;🎯 Zero Outage Regressions&lt;/b&gt;&lt;br/&gt;&lt;span style=&quot;font-size:9px; color:#94a3b8;&quot;&gt;Eliminates unhandled exceptions &amp;amp; endpoint drift.&lt;/span&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#1e293b;strokeColor=#a855f7;align=left;spacingLeft=10;" vertex="1" parent="box_kpis">
+          <mxGeometry x="10" y="218" width="270" height="50" as="geometry" />
+        </mxCell>
+
+        <mxCell id="kpi_foot" value="Psiog Enterprise Integration Standards Engine" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontColor=#64748b;fontSize=10;fontStyle=2" vertex="1" parent="box_kpis">
+          <mxGeometry x="25" y="340" width="240" height="20" as="geometry" />
+        </mxCell>
+
+        <!-- ==================== CONNECTORS / EDGES ==================== -->
+        <mxCell id="edge1" edge="1" source="node_atomsphere" target="box_rules" parent="1" style="strokeColor=#38bdf8;strokeWidth=2;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.3;entryDx=0;entryDy=0;">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <mxCell id="edge2" edge="1" source="node_dev" target="box_drift" parent="1" style="strokeColor=#38bdf8;strokeWidth=2;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.3;entryDx=0;entryDy=0;">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <mxCell id="edge3" edge="1" source="c2" target="out_report" parent="1" style="strokeColor=#c084fc;strokeWidth=2;exitX=1;exitY=0.3;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <mxCell id="edge4" edge="1" source="box_ai" target="c3" parent="1" style="strokeColor=#fbbf24;strokeWidth=2;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.7;entryDx=0;entryDy=0;">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

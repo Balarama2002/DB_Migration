@@ -1,0 +1,20 @@
+# Python cache
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Environment & Secrets (Never commit secrets!)
+.env
+.env.*
+*.key
+*.pem
+
+# Local testing, caches, & runtime outputs
+*.log
+active-development/
+reports/
+*.tmp
+.sync-state/
+scratch/
+.DS_Store
+Thumbs.db

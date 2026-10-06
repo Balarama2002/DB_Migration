@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bns:Component branchId="main" xmlns:bns="http://api.platform.boomi.com/"
+               componentId="6e9e0da8-80ff-43a8-847e-6d9a08b2799d"
+               name="Disk_V2_Connection"
+               type="connector-settings"
+               subType="disk-sdk"
+               folderId="Rjo4NzIwMDU2">
+  <bns:encryptedValues/>
+  <bns:description>built with boomi-companion vunknown</bns:description><bns:object>
+    <GenericConnectionConfig>
+      <field id="directory" type="string" value="c:\Users\TGH-HYD-090\OneDrive\Documents\Migration"/>
+      <field id="pollingInterval" type="integer" value="10000"/>
+    </GenericConnectionConfig>
+  </bns:object>
+</bns:Component>

@@ -1,0 +1,27 @@
+---
+description: Boomi integration code review and static analysis guidelines
+globs: ["**/*.xml", "**/*.bxml", "active-development/**"]
+alwaysApply: false
+---
+
+# Boomi Code Review Standards (Psiog Framework)
+
+When reviewing Boomi components or editing Boomi XML files:
+
+1. **Run Static Analysis**:
+   Execute the linter command in the terminal:
+   ```bash
+   python scripts/boomi_code_review.py <target-file-or-dir> --format markdown
+   ```
+
+2. **Enforce Core Policies**:
+   - **Database Service Accounts (`SRV_`)**: All database connections must use a username prefixed with `SRV_`. Generic or personal accounts are strictly rejected (`CRITICAL`).
+   - **Credentials in Extensions**: Passwords, API keys, and Bearer tokens must never be hardcoded in component definitions or Process Property defaults (`CRITICAL`).
+   - **Try/Catch Coverage**: Outbound connectors (HTTP, REST, DB, WSS) must be wrapped in Try/Catch (`CRITICAL`).
+   - **Connection Duplication**: Disallow redundant connections pointing to the same endpoint or mixed HTTP/REST connectors for the same API (`MAJOR`).
+   - **Batch Halt Dynamics**: Verify Try/Catch is positioned *downstream* of Split shapes to isolate document failures (`MAJOR`).
+   - **Error Notification Context**: Error notifications must include Execution ID, Atom Name, Catch Errors Message, and Business Tracking IDs (`MAJOR`).
+   - **Shape Labelling**: Flag default/empty labels (`userlabel=""`) across all shapes (`MAJOR`).
+
+3. **Reporting**:
+   Use `references/report_template.md` and `references/checklist.md` to format formal review results.

@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Boomi Database V2 Migration Hub</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/static/style.css?v=3.2">
+</head>
+<body>
+    <div class="background-decorations">
+        <div class="glow-orb orb-1"></div>
+        <div class="glow-orb orb-2"></div>
+        <div class="grid-overlay"></div>
+    </div>
+
+    <div class="app-container">
+        <!-- Header -->
+        <header class="app-header">
+            <div class="brand">
+                <div class="brand-icon">
+                    <span class="icon-pulse"></span>
+                </div>
+                <div class="brand-text">
+                    <h1>Boomi Database V2</h1>
+                    <p>Migration Hub & Agent Manager</p>
+                </div>
+            </div>
+            <div class="status-indicator" id="overall-status">
+                <span class="status-dot disconnected"></span>
+                <span class="status-label">Disconnected</span>
+            </div>
+        </header>
+
+        <!-- Main Workspace -->
+        <main class="app-workspace">
+            <!-- Left Panel: Configuration -->
+            <section class="glass-panel config-panel">
+                <div class="panel-header">
+                    <h2>Configuration Settings</h2>
+                    <p>Enter platform secrets and AI preferences</p>
+                </div>
+
+                <form id="config-form" class="panel-body">
+                    <!-- Boomi Credentials -->
+                    <fieldset>
+                        <legend>Boomi Platform Credentials</legend>
+                        <div class="form-group">
+                            <label for="boomi-username">Username / Email</label>
+                            <input type="email" id="boomi-username" placeholder="email@example.com" required autocomplete="username">
+                        </div>
+                        <div class="form-group">
+                            <label for="boomi-token">API Token</label>
+                            <div class="password-input-wrapper">
+                                <input type="password" id="boomi-token" placeholder="Enter API Token" required autocomplete="current-password">
+                                <button type="button" class="toggle-password-btn" data-target="boomi-token" title="Show / Hide API Token" aria-label="Show or hide API token">
+                                    <svg class="eye-icon" viewBox="0 0 24 24" width="18" height="18"><path d="M12 4.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5zM12 17c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5zm0-8c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z"/></svg>
+                                    <svg class="eye-off-icon hidden" viewBox="0 0 24 24" width="18" height="18"><path d="M12 7c2.76 0 5 2.24 5 5 0 .65-.13 1.26-.36 1.83l2.92 2.92c1.51-1.26 2.7-2.89 3.44-4.75-1.73-4.39-6-7.5-11-7.5-1.4 0-2.74.25-3.98.7l2.16 2.16C10.74 7.13 11.35 7 12 7zM2 4.27l2.28 2.28.46.46C3.08 8.3 1.78 10.02 1 12c1.73 4.39 6 7.5 11 7.5 1.55 0 3.03-.3 4.38-.84l.42.42L19.73 22 21 20.73 3.27 3 2 4.27zM7.53 9.8l1.55 1.55c-.05.21-.08.43-.08.65 0 1.66 1.34 3 3 3 .22 0 .44-.03.65-.08l1.55 1.55c-.67.33-1.41.53-2.2.53-2.76 0-5-2.24-5-5 0-.79.2-1.53.53-2.2zm4.31-.78l3.15 3.15.02-.16c0-1.66-1.34-3-3-3l-.17.01z"/></svg>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="boomi-account">Account ID</label>
+                            <input type="text" id="boomi-account" placeholder="Enter Account ID" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="boomi-branch">Working Branch <span class="badge-branch-tag">Required</span></label>
+                            <input type="text" id="boomi-branch" placeholder="e.g. dbv2_merging" required autocomplete="off">
+                            <small class="branch-help-text"><span class="shield-icon">🛡️</span> 'main' branch is strictly protected & prohibited</small>
+                        </div>
+                        <div class="form-group">
+                            <label for="boomi-url">Base API URL</label>
+                            <input type="url" id="boomi-url" value="https://api.boomi.com" placeholder="https://api.boomi.com" required>
+                        </div>
+                    </fieldset>
+
+                    <!-- AI Settings -->
+                    <fieldset>
+                        <legend>Decoupled AI Engine Provider</legend>
+                        <div class="form-group">
+                            <label for="ai-provider">Select Provider</label>
+                            <select id="ai-provider">
+                                <option value="gemini" selected>Google Gemini (Recommended)</option>
+                                <option value="claude">Anthropic Claude</option>
+                                <option value="openai">OpenAI GPT</option>
+                                <option value="qwen">Alibaba Qwen</option>
+                                <option value="mistral">Mistral AI</option>
+                                <option value="deepseek">DeepSeek</option>
+                                <option value="llama">Meta Llama (Groq)</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="ai-key">API Key</label>
+                            <div class="password-input-wrapper">
+                                <input type="password" id="ai-key" placeholder="Enter API Key" required autocomplete="off">
+                                <button type="button" class="toggle-password-btn" data-target="ai-key" title="Show / Hide API Key" aria-label="Show or hide API key">
+                                    <svg class="eye-icon" viewBox="0 0 24 24" width="18" height="18"><path d="M12 4.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5zM12 17c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5zm0-8c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z"/></svg>
+                                    <svg class="eye-off-icon hidden" viewBox="0 0 24 24" width="18" height="18"><path d="M12 7c2.76 0 5 2.24 5 5 0 .65-.13 1.26-.36 1.83l2.92 2.92c1.51-1.26 2.7-2.89 3.44-4.75-1.73-4.39-6-7.5-11-7.5-1.4 0-2.74.25-3.98.7l2.16 2.16C10.74 7.13 11.35 7 12 7zM2 4.27l2.28 2.28.46.46C3.08 8.3 1.78 10.02 1 12c1.73 4.39 6 7.5 11 7.5 1.55 0 3.03-.3 4.38-.84l.42.42L19.73 22 21 20.73 3.27 3 2 4.27zM7.53 9.8l1.55 1.55c-.05.21-.08.43-.08.65 0 1.66 1.34 3 3 3 .22 0 .44-.03.65-.08l1.55 1.55c-.67.33-1.41.53-2.2.53-2.76 0-5-2.24-5-5 0-.79.2-1.53.53-2.2zm4.31-.78l3.15 3.15.02-.16c0-1.66-1.34-3-3-3l-.17.01z"/></svg>
+                                </button>
+                            </div>
+                        </div>
+                    </fieldset>
+
+                    <div class="form-actions">
+                        <button type="button" id="validate-btn" class="btn btn-secondary">
+                            <span class="btn-text">Validate Account</span>
+                            <span class="btn-spinner hidden"></span>
+                        </button>
+                    </div>
+                </form>
+            </section>
+
+            <!-- Right Panel: Operations & Reports -->
+            <section class="glass-panel workspace-panel">
+                <!-- Navigation Tabs -->
+                <nav class="panel-tabs">
+                    <button class="tab-btn active" data-tab="scan-tab">1. Discovery Scan</button>
+                    <button class="tab-btn" id="migrate-nav-tab" data-tab="migrate-tab" disabled>2. Migration Agent</button>
+                    <button class="tab-btn" id="report-nav-tab" data-tab="report-tab" disabled>3. Results Report</button>
+                </nav>
+
+                <div class="panel-content">
+                    <!-- Tab 1: Discovery & Scan -->
+                    <div class="tab-pane active" id="scan-tab">
+                        <div class="pane-header">
+                            <h3>Scan Legacy Components</h3>
+                            <p>Discover legacy DB connections, operations, profiles, and their where-used dependencies.</p>
+                        </div>
+                        <div class="pane-body">
+                            <div class="action-banner" style="display: flex; gap: 12px; align-items: center; flex-wrap: wrap; margin-bottom: 20px;">
+                                <input type="text" id="scan-folder-filter" placeholder="Optional: Filter by folder path (e.g. Hotfix)" style="flex: 1; min-width: 250px; padding: 10px 16px; border-radius: 10px; background: #ffffff; border: 1px solid rgba(0,0,0,0.15); color: #2d3436; font-size: 0.9rem; box-shadow: 0 1px 3px rgba(0,0,0,0.02); outline: none;">
+                                <button type="button" id="scan-btn" class="btn btn-primary" disabled title="Please enter credentials and click 'Validate Account' first">
+                                    <span class="btn-text">Start Discovery Scan</span>
+                                    <span class="btn-spinner hidden"></span>
+                                </button>
+                                <button type="button" id="download-excel-btn" class="btn btn-secondary hidden" style="background: linear-gradient(135deg, #1b5e20, #2e7d32); color: #fff; border: none;">
+                                    <span>📊 Download Audit Report (.xlsx)</span>
+                                </button>
+                                <button type="button" id="download-report-btn" class="btn btn-outline hidden">
+                                    <span>Download Markdown (.md)</span>
+                                </button>
+                            </div>
+
+                            <!-- Live Scan Progress Box -->
+                            <div id="scan-progress-box" class="hidden" style="background: rgba(0, 188, 212, 0.08); border: 1px solid rgba(0, 188, 212, 0.3); border-radius: 12px; padding: 15px; margin-bottom: 20px;">
+                                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;">
+                                    <span style="font-weight: 600; color: #00e5ff;">⚡ Live Discovery in Progress (Fetching Concurrently)...</span>
+                                    <span id="scan-elapsed" style="font-size: 0.85rem; color: var(--text-secondary);">0s</span>
+                                </div>
+                                <div style="display: flex; gap: 12px; flex-wrap: wrap;">
+                                    <div style="flex: 1; min-width: 120px; background: rgba(0,0,0,0.25); padding: 8px 12px; border-radius: 8px;">
+                                        <div style="font-size: 0.75rem; color: #ffb74d;">CONNECTIONS</div>
+                                        <div id="live-conns-stat" style="font-size: 1.05rem; font-weight: 700; color: #fff;">0 found</div>
+                                    </div>
+                                    <div style="flex: 1; min-width: 120px; background: rgba(0,0,0,0.25); padding: 8px 12px; border-radius: 8px;">
+                                        <div style="font-size: 0.75rem; color: #ce93d8;">OPERATIONS</div>
+                                        <div id="live-ops-stat" style="font-size: 1.05rem; font-weight: 700; color: #fff;">0 found</div>
+                                    </div>
+                                    <div style="flex: 1; min-width: 120px; background: rgba(0,0,0,0.25); padding: 8px 12px; border-radius: 8px;">
+                                        <div style="font-size: 0.75rem; color: #80deea;">PROFILES</div>
+                                        <div id="live-profs-stat" style="font-size: 1.05rem; font-weight: 700; color: #fff;">0 found</div>
+                                    </div>
+                                    <div style="flex: 1; min-width: 120px; background: rgba(0,0,0,0.25); padding: 8px 12px; border-radius: 8px;">
+                                        <div style="font-size: 0.75rem; color: #ffab91;">MAPS &amp; CACHES</div>
+                                        <div id="live-maps-stat" style="font-size: 1.05rem; font-weight: 700; color: #fff;">0 found</div>
+                                    </div>
+                                    <div style="flex: 1; min-width: 120px; background: rgba(0,0,0,0.25); padding: 8px 12px; border-radius: 8px;">
+                                        <div style="font-size: 0.75rem; color: #81c784;">DB PROCESSES</div>
+                                        <div id="live-procs-stat" style="font-size: 1.05rem; font-weight: 700; color: #fff;">Resolving DB usage...</div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="results-container hidden" id="scan-results">
+                                <div class="stats-grid" style="grid-template-columns: repeat(6, 1fr);">
+                                    <div class="stat-card">
+                                        <h4 id="stat-conns">0</h4>
+                                        <p>Connections</p>
+                                    </div>
+                                    <div class="stat-card">
+                                        <h4 id="stat-ops">0</h4>
+                                        <p>Operations</p>
+                                    </div>
+                                    <div class="stat-card">
+                                        <h4 id="stat-profiles">0</h4>
+                                        <p>Profiles</p>
+                                    </div>
+                                    <div class="stat-card">
+                                        <h4 id="stat-maps">0</h4>
+                                        <p>Maps (DB)</p>
+                                    </div>
+                                    <div class="stat-card">
+                                        <h4 id="stat-caches">0</h4>
+                                        <p>Caches (DB)</p>
+                                    </div>
+                                    <div class="stat-card">
+                                        <h4 id="stat-processes">0</h4>
+                                        <p>DB Processes</p>
+                                    </div>
+                                </div>
+
+                                <div class="explorer-section">
+                                    <div class="explorer-header-flex" style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; gap: 10px; flex-wrap: wrap;">
+                                        <h4>Discovered Legacy DB Components &amp; Structure</h4>
+                                        <input type="text" id="component-search" placeholder="🔍 Search by component name, process, or folder..." style="padding: 9px 16px; border-radius: 8px; background: #ffffff; border: 1px solid rgba(0,0,0,0.15); color: #2d3436; font-size: 0.85rem; min-width: 280px; box-shadow: 0 1px 3px rgba(0,0,0,0.02); outline: none;">
+                                    </div>
+                                    <div class="category-tabs" style="display: flex; gap: 8px; margin-bottom: 14px; flex-wrap: wrap;">
+                                        <button type="button" class="btn btn-outline cat-btn active" data-cat="folders" style="padding: 6px 14px; font-size: 0.85rem; font-weight: 600;">📁 Folder Structure (<span id="cat-folders-count">0</span>)</button>
+                                        <button type="button" class="btn btn-outline cat-btn" data-cat="connections" style="padding: 6px 14px; font-size: 0.85rem;">🔌 Connections (<span id="cat-conns-count">0</span>)</button>
+                                        <button type="button" class="btn btn-outline cat-btn" data-cat="operations" style="padding: 6px 14px; font-size: 0.85rem;">⚙️ Operations (<span id="cat-ops-count">0</span>)</button>
+                                        <button type="button" class="btn btn-outline cat-btn" data-cat="profiles" style="padding: 6px 14px; font-size: 0.85rem;">📄 Profiles (<span id="cat-profs-count">0</span>)</button>
+                                        <button type="button" class="btn btn-outline cat-btn" data-cat="maps" style="padding: 6px 14px; font-size: 0.85rem;">🗺️ Maps (<span id="cat-maps-count">0</span>)</button>
+                                        <button type="button" class="btn btn-outline cat-btn" data-cat="caches" style="padding: 6px 14px; font-size: 0.85rem;">💾 Caches (<span id="cat-caches-count">0</span>)</button>
+                                        <button type="button" class="btn btn-outline cat-btn" data-cat="processes" style="padding: 6px 14px; font-size: 0.85rem;">🚀 Processes (<span id="cat-procs-count">0</span>)</button>
+                                    </div>
+                                    <div class="explorer-tree" id="dependency-tree">
+                                        <!-- Dynamic items go here -->
+                                    </div>
+                                    <div id="load-more-container" style="text-align: center; margin-top: 12px;" class="hidden">
+                                        <button type="button" id="load-more-btn" class="btn btn-outline" style="font-size: 0.85rem;">Load More Components</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Tab 2: Migration Agent -->
+                    <div class="tab-pane" id="migrate-tab">
+                        <div class="pane-header">
+                            <h3>Granular Component & Process Migration</h3>
+                            <p>Select specific components (Connections, Operations, Profiles, Maps, Caches, Processes) or target folders to migrate to Database V2 dynamically.</p>
+                        </div>
+                        <div class="pane-body">
+                            <div class="migration-options card-panel">
+                                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; flex-wrap: wrap; gap: 10px;">
+                                    <h4 style="margin: 0;">Targeted Migration & Component Selection</h4>
+                                    <div id="migration-mode-badge" class="mode-badge folder-mode" style="font-size: 0.75rem; font-weight: 700; padding: 4px 10px; border-radius: 6px; background: #e0e7ff; color: #4338ca;">
+                                        📁 Folder / All Mode
+                                    </div>
+                                </div>
+                                
+                                <div class="form-group" style="margin-bottom: 14px;">
+                                    <label for="folder-filter">Target Specific Folder Path (Optional)</label>
+                                    <input type="text" id="folder-filter" placeholder="e.g. DataBase_Migration (Filters components and processes in this folder)">
+                                    <span class="helper-text">Leave blank to browse all discovered components or migrate all components.</span>
+                                </div>
+
+                                <!-- Component Search & Controls Bar -->
+                                <div class="migrate-tree-controls" style="display: flex; justify-content: space-between; align-items: center; gap: 12px; margin-bottom: 10px; flex-wrap: wrap;">
+                                    <div class="search-box migrate-search-box" style="flex: 1; min-width: 280px; position: relative; display: flex; align-items: center;">
+                                        <span class="search-icon" style="position: absolute; left: 12px; color: #94a3b8; pointer-events: none;">🔍</span>
+                                        <input type="text" id="migrate-process-search" placeholder="Search by component name, ID, type, or folder path..." style="padding-left: 36px; padding-right: 32px; width: 100%; border-radius: 8px; border: 1px solid #cbd5e1; height: 38px; font-size: 0.88rem;">
+                                        <button type="button" id="migrate-search-clear" class="btn-clear hidden" title="Clear search" style="position: absolute; right: 10px; background: none; border: none; color: #94a3b8; cursor: pointer; font-size: 1rem;">✕</button>
+                                    </div>
+                                    <div class="migrate-selection-actions" style="display: flex; align-items: center; gap: 8px; flex-wrap: wrap;">
+                                        <span id="migrate-selection-count" class="selection-count-pill" style="font-size: 0.8rem; font-weight: 700; background: #f1f5f9; color: #334155; padding: 5px 12px; border-radius: 20px; border: 1px solid #cbd5e1;">0 items selected</span>
+                                        <button type="button" id="migrate-select-all-btn" class="btn btn-outline" style="font-size: 0.8rem; padding: 5px 10px;">Select All Visible</button>
+                                        <button type="button" id="migrate-clear-all-btn" class="btn btn-outline" style="font-size: 0.8rem; padding: 5px 10px;">Clear Selection</button>
+                                    </div>
+                                </div>
+
+                                <!-- Component Category Filter Pills -->
+                                <div class="migrate-category-tabs" id="migrate-cat-tabs" style="display: flex; gap: 6px; margin-bottom: 10px; flex-wrap: wrap;">
+                                    <button type="button" class="btn btn-outline migrate-cat-btn active" data-type="all" style="padding: 4px 10px; font-size: 0.78rem; font-weight: 600;">All Items</button>
+                                    <button type="button" class="btn btn-outline migrate-cat-btn" data-type="processes" style="padding: 4px 10px; font-size: 0.78rem;">🚀 Processes</button>
+                                    <button type="button" class="btn btn-outline migrate-cat-btn" data-type="connections" style="padding: 4px 10px; font-size: 0.78rem;">🔌 Connections</button>
+                                    <button type="button" class="btn btn-outline migrate-cat-btn" data-type="operations" style="padding: 4px 10px; font-size: 0.78rem;">⚙️ Operations</button>
+                                    <button type="button" class="btn btn-outline migrate-cat-btn" data-type="maps" style="padding: 4px 10px; font-size: 0.78rem;">🗺️ Maps</button>
+                                    <button type="button" class="btn btn-outline migrate-cat-btn" data-type="caches" style="padding: 4px 10px; font-size: 0.78rem;">💾 Caches</button>
+                                    <button type="button" class="btn btn-outline migrate-cat-btn" data-type="profiles" style="padding: 4px 10px; font-size: 0.78rem;">📄 Profiles</button>
+                                </div>
+
+                                <!-- Component Hierarchy Tree -->
+                                <div class="migrate-tree-wrapper" style="margin-bottom: 14px;">
+                                    <div class="migrate-tree-header" style="display: flex; justify-content: space-between; align-items: center; padding: 8px 12px; background: #f8fafc; border-radius: 8px 8px 0 0; border: 1px solid #e2e8f0; border-bottom: none;">
+                                        <span style="font-weight: 700; font-size: 0.82rem; color: #1e293b;">📁 Hierarchical Component & Process Explorer</span>
+                                        <span style="font-size: 0.75rem; color: #64748b;">Check specific components or folders to migrate targeted items</span>
+                                    </div>
+                                    <div class="explorer-tree" id="migrate-process-tree" style="max-height: 420px; overflow-y: auto; padding: 12px; background: #fafbfc; border-radius: 0 0 8px 8px; border: 1px solid #e2e8f0;">
+                                        <div style="padding: 24px; text-align: center; color: var(--text-secondary);">
+                                            <em>Run Discovery Scan first to populate the hierarchical component tree.</em>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div style="margin-top: 16px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px;">
+                                    <div id="migration-intent-note" style="font-size: 0.82rem; color: #475569; max-width: 65%;">
+                                        💡 <strong>Migration Strategy:</strong> If component checkboxes are selected, only those checked items (Connections, Operations, Profiles, Maps, Caches, or Processes) will be migrated to DB V2.
+                                    </div>
+                                    <button type="button" id="migrate-btn" class="btn btn-accent" style="min-width: 260px;">
+                                        <span class="btn-text">Execute DB V2 Migration</span>
+                                        <span class="btn-spinner hidden"></span>
+                                    </button>
+                                </div>
+                            </div>
+
+                            <div class="console-log-container hidden" id="console-section">
+                                <h4>Migration Real-time Logger</h4>
+                                <div class="console-terminal" id="terminal-log">
+                                    <div class="log-line system">Waiting for execution...</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Tab 3: Walkthrough Report -->
+                    <div class="tab-pane" id="report-tab">
+                        <div class="pane-header">
+                            <h3>Migration Walkthrough & Changes Report</h3>
+                            <p>Verify newly created components and modified dependencies on the platform.</p>
+                        </div>
+                        <div class="pane-body">
+                            <div class="action-banner">
+                                <button type="button" id="download-mig-report-btn" class="btn btn-primary">
+                                    <span>Download Final Walkthrough MD</span>
+                                </button>
+                            </div>
+
+                            <div class="report-table-wrapper">
+                                <table class="report-table">
+                                    <thead>
+                                        <tr>
+                                            <th>Type</th>
+                                            <th>Original Name</th>
+                                            <th>Original ID</th>
+                                            <th>New Name</th>
+                                            <th>New ID</th>
+                                            <th>Status</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="report-summary-body">
+                                        <!-- Dynamic rows -->
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <!-- Notification Toast -->
+    <div class="toast hidden" id="toast-notification">
+        <span class="toast-message">Notification message</span>
+    </div>
+
+    <script src="/static/app.js?v=3.6"></script>
+</body>
+</html>

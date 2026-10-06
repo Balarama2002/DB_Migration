@@ -1,0 +1,17 @@
+# Boomi Code Review Standards (Psiog Framework)
+
+When reviewing Boomi components or editing Boomi XML files:
+
+1. Static Analysis CLI:
+   Run: `python scripts/boomi_code_review.py <target-file-or-dir> --format markdown`
+
+2. Critical Policies:
+   - Database Service Accounts: Usernames must have `SRV_` prefix. Personal/generic accounts are rejected (CRITICAL).
+   - No Hardcoded Secrets: Passwords, tokens, and API keys must be in Environment Extensions (CRITICAL).
+   - Try/Catch Coverage: Outbound connectors (HTTP, REST, DB, WSS) must be wrapped in Try/Catch (CRITICAL).
+   - No Duplicate Connections: Consolidate duplicate host/endpoint URLs (MAJOR).
+   - Batch Isolation: Try/Catch must be downstream of Split shapes to isolate failures (MAJOR).
+   - Diagnostic Notifications: Must include Execution ID, Atom Name, Error Message, and Business Document Key (MAJOR).
+   - Descriptive Labels: Shapes must not have default or empty labels (MAJOR).
+
+3. Reference: Use `references/report_template.md` for formatting formal review reports.

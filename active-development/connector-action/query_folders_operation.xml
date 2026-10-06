@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bns:Component branchId="main" xmlns:bns="http://api.platform.boomi.com/" 
+               xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+               componentId="656845d6-2982-4b23-a066-5f725c114b44"
+               name="POST Query Folders"
+               type="connector-action"
+               subType="officialboomi-X3979C-rest-prod"
+               folderId="Rjo4NzM3Njkx">
+  <bns:encryptedValues/>
+  <bns:description>built with boomi-companion vunknown</bns:description><bns:object>
+    <Operation returnApplicationErrors="true" trackResponse="false">
+      <Archiving directory="" enabled="false"/>
+      <Configuration>
+        <GenericOperationConfig customOperationType="POST" operationType="EXECUTE">
+          <field id="followRedirects" type="string" value="NONE"/>
+          <field id="path" type="string" value=""/>
+          <field id="queryParameters" type="customproperties">
+            <customProperties/>
+          </field>
+          <field id="requestHeaders" type="customproperties">
+            <customProperties>
+              <properties key="Authorization" value=""/>
+              <properties key="Content-Type" value="application/json"/>
+              <properties key="Accept" value="application/json"/>
+            </customProperties>
+          </field>
+          <Options/>
+        </GenericOperationConfig>
+      </Configuration>
+      <Tracking>
+        <TrackedFields/>
+      </Tracking>
+      <Caching/>
+    </Operation>
+  </bns:object>
+</bns:Component>
