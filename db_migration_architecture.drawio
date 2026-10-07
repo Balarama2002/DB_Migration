@@ -1,0 +1,237 @@
+<mxfile host="app.diagrams.net" modified="2026-10-07T16:30:00.000Z" agent="Antigravity" version="21.0.0" type="device">
+  <diagram id="boomi-db-migration-arch" name="Boomi DB Migration Architecture">
+    <mxGraphModel dx="1422" dy="800" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1500" pageHeight="950" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+
+        <!-- ==================== OUTER BOUNDARY: GREEN CONTAINER ==================== -->
+        <mxCell id="outer_agent" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#16a34a;strokeWidth=3;arcSize=2;" vertex="1" parent="1">
+          <mxGeometry x="30" y="30" width="1380" height="850" as="geometry" />
+        </mxCell>
+
+        <!-- Outer Title & Subtitle -->
+        <mxCell id="title" value="&lt;b style=&quot;font-size:22px; color:#16a34a;&quot;&gt;Boomi Database V2 Migration Agent&lt;/b&gt;&lt;br/&gt;&lt;span style=&quot;font-size:11px; color:#64748b;&quot;&gt;End-to-End Autonomous Modernization Suite: Legacy Database &amp;rarr; Database V2 (officialboomi-X3979C-dbv2da-prod)&lt;/span&gt;" style="text;html=1;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="60" y="45" width="460" height="50" as="geometry" />
+        </mxCell>
+
+        <!-- Top Center: Boomi Agent UI -->
+        <mxCell id="node_ui" value="&lt;b style=&quot;font-size:13px; color:#0f172a;&quot;&gt;💻 Boomi Agent UI&lt;/b&gt;&lt;br/&gt;&lt;span style=&quot;font-size:10px; color:#0284c7; font-weight:600;&quot;&gt;Migration Hub (localhost:8000)&lt;/span&gt;&lt;br/&gt;&lt;span style=&quot;font-size:9px; color:#64748b;&quot;&gt;Mode A (Single) | Mode B (Bulk Folder)&lt;/span&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8fafc;strokeColor=#0284c7;strokeWidth=1.5;align=center;arcSize=10;" vertex="1" parent="1">
+          <mxGeometry x="540" y="45" width="220" height="60" as="geometry" />
+        </mxCell>
+
+        <!-- Top Right: Legend Box -->
+        <mxCell id="legend_box" value="&lt;b style=&quot;font-size:11px; color:#334155;&quot;&gt;FLOW LEGEND&lt;/b&gt;&lt;br/&gt;&lt;span style=&quot;color:#ef4444; font-weight:bold;&quot;&gt;---&amp;gt;&lt;/span&gt; &lt;span style=&quot;font-size:10px; color:#334155;&quot;&gt;Primary Flow&lt;/span&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;span style=&quot;color:#2563eb; font-weight:bold;&quot;&gt;---&amp;gt;&lt;/span&gt; &lt;span style=&quot;font-size:10px; color:#334155;&quot;&gt;Discovery Flow&lt;/span&gt;&lt;br/&gt;&lt;span style=&quot;color:#f97316; font-weight:bold;&quot;&gt;---&amp;gt;&lt;/span&gt; &lt;span style=&quot;font-size:10px; color:#334155;&quot;&gt;Transformation Flow&lt;/span&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;span style=&quot;color:#16a34a; font-weight:bold;&quot;&gt;---&amp;gt;&lt;/span&gt; &lt;span style=&quot;font-size:10px; color:#334155;&quot;&gt;Deployment Response&lt;/span&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8fafc;strokeColor=#cbd5e1;align=center;" vertex="1" parent="1">
+          <mxGeometry x="1060" y="45" width="320" height="58" as="geometry" />
+        </mxCell>
+
+        <!-- ==================== MAIN INNER CONTAINER: RED BORDER (AI-ENGINE) ==================== -->
+        <mxCell id="box_ai_engine" value="&lt;b style=&quot;font-size:15px; color:#2563eb;&quot;&gt;AI-Engine&lt;/b&gt; &lt;span style=&quot;font-size:10px; color:#64748b;&quot;&gt;&amp;bull; MigrationTools Orchestration &amp;amp; Platform Sync&lt;/span&gt;" style="swimlane;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#ef4444;strokeWidth=2.5;fontColor=#2563eb;fontStyle=1;startSize=30;rounded=1;arcSize=2;" vertex="1" parent="1">
+          <mxGeometry x="50" y="125" width="1340" height="730" as="geometry" />
+        </mxCell>
+
+        <!-- ==================== LEFT COLUMN: RUNTIME & PLATFORM ==================== -->
+        
+        <!-- Boomi Runtime Engine -->
+        <mxCell id="node_runtime" value="&lt;b style=&quot;font-size:13px; color:#0f172a;&quot;&gt;🖥️ Boomi Runtime Engine&lt;/b&gt;&lt;br/&gt;&lt;span style=&quot;font-size:11px; color:#475569;&quot;&gt;FastAPI Backend &amp;amp; MigrationTools&lt;/span&gt;&lt;br/&gt;&lt;span style=&quot;font-size:9.5px; color:#0284c7; font-weight:600;&quot;&gt;SSE Live Streaming Logger&lt;/span&gt;&lt;br/&gt;&lt;span style=&quot;font-size:9px; color:#64748b;&quot;&gt;Mode A: Single Process | Mode B: Folder Bulk&lt;/span&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8fafc;strokeColor=#334155;strokeWidth=2;align=center;arcSize=6;" vertex="1" parent="box_ai_engine">
+          <mxGeometry x="30" y="90" width="260" height="95" as="geometry" />
+        </mxCell>
+
+        <!-- Metadata Exchange Bidirectional Arrows -->
+        <mxCell id="node_exchange" value="&lt;b style=&quot;font-size:12px; color:#0f172a;&quot;&gt;🔄 Metadata Exchange&lt;/b&gt;&lt;br/&gt;&lt;span style=&quot;font-size:9.5px; color:#64748b;&quot;&gt;Component &amp;amp; Reference APIs&lt;/span&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f1f5f9;strokeColor=#cbd5e1;align=center;arcSize=8;" vertex="1" parent="box_ai_engine">
+          <mxGeometry x="65" y="240" width="190" height="50" as="geometry" />
+        </mxCell>
+
+        <!-- Exchange Connectors -->
+        <mxCell id="edge_ex1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#0f172a;strokeWidth=2;" edge="1" parent="box_ai_engine" source="node_runtime" target="node_exchange">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge_ex2" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#0f172a;strokeWidth=2;" edge="1" parent="box_ai_engine" source="node_exchange" target="node_platform">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- Boomi Enterprise Platform Cloud -->
+        <mxCell id="node_platform" value="&lt;b style=&quot;font-size:13px; color:#0f172a;&quot;&gt;☁️ Boomi Enterprise Platform&lt;/b&gt;&lt;br/&gt;&lt;span style=&quot;font-size:10px; color:#64748b;&quot;&gt;AtomSphere Platform Services &amp;amp; Build Tab&lt;/span&gt;&lt;br/&gt;&lt;span style=&quot;font-size:10px; color:#16a34a; font-weight:bold;&quot;&gt;Working Branch: dbv2_merging&lt;/span&gt;&lt;br/&gt;&lt;span style=&quot;font-size:9.5px; color:#ef4444; font-weight:bold;&quot;&gt;Main Branch Guard: ACTIVE 🛡️&lt;/span&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f0f9ff;strokeColor=#0284c7;strokeWidth=2;align=center;arcSize=10;" vertex="1" parent="box_ai_engine">
+          <mxGeometry x="30" y="340" width="260" height="100" as="geometry" />
+        </mxCell>
+
+
+        <!-- ==================== TOP RIGHT: KNOWLEDGE-BASE (BLUE BOX) ==================== -->
+        <!-- DISCOVERY, AUDITING & WHERE-USED DEPENDENCY TRACKING -->
+        <mxCell id="box_kb" value="&lt;b style=&quot;font-size:14px; color:#2563eb;&quot;&gt;Knowledge-Base&lt;/b&gt; &lt;span style=&quot;font-size:10px; color:#64748b;&quot;&gt;&amp;bull; Hierarchical Subfolder Discovery &amp;amp; Where-Used Dependency Engine&lt;/span&gt;" style="swimlane;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#2563eb;strokeWidth=2.5;fontColor=#2563eb;fontStyle=1;startSize=28;rounded=1;arcSize=2;" vertex="1" parent="box_ai_engine">
+          <mxGeometry x="400" y="45" width="910" height="270" as="geometry" />
+        </mxCell>
+
+        <!-- Step 1: Subfolder Audit -->
+        <mxCell id="kb_step1" value="&lt;b style=&quot;font-size:11px; color:#0f172a;&quot;&gt;📁 Subfolder Tree Audit&lt;/b&gt;&lt;br/&gt;&lt;span style=&quot;font-size:9px; color:#475569;&quot;&gt;Recursive parentId path resolution&lt;br/&gt;Direct vs. Rollup item counts&lt;/span&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#eff6ff;strokeColor=#3b82f6;strokeWidth=1.5;align=center;" vertex="1" parent="box_kb">
+          <mxGeometry x="25" y="45" width="180" height="65" as="geometry" />
+        </mxCell>
+
+        <!-- Arrow 1 -> 2 -->
+        <mxCell id="kb_arr1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#2563eb;strokeWidth=2;" edge="1" parent="box_kb" source="kb_step1" target="kb_step2">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- Step 2: Legacy DB Discovery -->
+        <mxCell id="kb_step2" value="&lt;b style=&quot;font-size:11px; color:#0f172a;&quot;&gt;🔍 Legacy DB Discovery&lt;/b&gt;&lt;br/&gt;&lt;span style=&quot;font-size:9px; color:#475569;&quot;&gt;Scans DB Conns, DB Operations&lt;br/&gt;&amp;amp; profile.db database profiles&lt;/span&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#eff6ff;strokeColor=#3b82f6;strokeWidth=1.5;align=center;" vertex="1" parent="box_kb">
+          <mxGeometry x="245" y="45" width="180" height="65" as="geometry" />
+        </mxCell>
+
+        <!-- Arrow 2 -> 3 -->
+        <mxCell id="kb_arr2" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#2563eb;strokeWidth=2;" edge="1" parent="box_kb" source="kb_step2" target="kb_step3">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- Step 3: Where-Used Dependency Graph -->
+        <mxCell id="kb_step3" value="&lt;b style=&quot;font-size:11px; color:#0f172a;&quot;&gt;🔗 Where-Used Graph&lt;/b&gt;&lt;br/&gt;&lt;span style=&quot;font-size:9px; color:#475569;&quot;&gt;Batched ComponentReference&lt;br/&gt;Resolves Maps, Caches, &amp;amp; Procs&lt;/span&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#eff6ff;strokeColor=#3b82f6;strokeWidth=1.5;align=center;" vertex="1" parent="box_kb">
+          <mxGeometry x="465" y="45" width="180" height="65" as="geometry" />
+        </mxCell>
+
+        <!-- Arrow 3 -> Cache DB -->
+        <mxCell id="kb_arr3" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#2563eb;strokeWidth=2;" edge="1" parent="box_kb" source="kb_step3" target="kb_cache">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- In-Memory Metadata DB Cache -->
+        <mxCell id="kb_cache" value="&lt;b style=&quot;font-size:11px; color:#1e40af;&quot;&gt;🗄️ Metadata Cache&lt;/b&gt;&lt;br/&gt;&lt;span style=&quot;font-size:9px; color:#475569;&quot;&gt;In-Memory Folder &amp;amp; Component DB&lt;br/&gt;Cached profile XMLs &amp;amp; Schema Diffs&lt;/span&gt;" style="shape=cylinder3;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;size=10;fillColor=#dbeafe;strokeColor=#2563eb;strokeWidth=1.5;align=center;" vertex="1" parent="box_kb">
+          <mxGeometry x="695" y="35" width="185" height="80" as="geometry" />
+        </mxCell>
+
+        <!-- Bottom Row: Filtering & Scope Extraction -->
+        <mxCell id="kb_filter" value="&lt;b style=&quot;font-size:10.5px; color:#0f172a;&quot;&gt;🛡️ Non-DB Filter&lt;/b&gt;&lt;br/&gt;&lt;span style=&quot;font-size:8.5px; color:#64748b;&quot;&gt;Safely preserves Disk, HTTP,&lt;br/&gt;SFTP, &amp;amp; Mail connectors&lt;/span&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8fafc;strokeColor=#cbd5e1;align=center;" vertex="1" parent="box_kb">
+          <mxGeometry x="85" y="155" width="190" height="55" as="geometry" />
+        </mxCell>
+
+        <mxCell id="kb_classify" value="&lt;b style=&quot;font-size:10.5px; color:#0f172a;&quot;&gt;⚖️ Action Classifier&lt;/b&gt;&lt;br/&gt;&lt;span style=&quot;font-size:8.5px; color:#64748b;&quot;&gt;Classify: Dynamic Update, Insert,&lt;br/&gt;Delete, or Standard Get&lt;/span&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8fafc;strokeColor=#cbd5e1;align=center;" vertex="1" parent="box_kb">
+          <mxGeometry x="360" y="155" width="190" height="55" as="geometry" />
+        </mxCell>
+
+        <mxCell id="kb_scope" value="&lt;b style=&quot;font-size:10.5px; color:#0f172a;&quot;&gt;📑 Scope Inventory&lt;/b&gt;&lt;br/&gt;&lt;span style=&quot;font-size:8.5px; color:#64748b;&quot;&gt;Fetch branch-specific XMLs&lt;br/&gt;on dbv2_merging&lt;/span&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8fafc;strokeColor=#cbd5e1;align=center;" vertex="1" parent="box_kb">
+          <mxGeometry x="635" y="155" width="190" height="55" as="geometry" />
+        </mxCell>
+
+        <!-- Sub-bullet note -->
+        <mxCell id="kb_note" value="&lt;span style=&quot;font-size:9.5px; color:#2563eb; font-weight:600;&quot;&gt;• Comprehensive Discovery of All 6 Tiers: Connections, Operations, Profiles, Maps, Caches, &amp;amp; DB Processes&lt;/span&gt;" style="text;html=1;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="box_kb">
+          <mxGeometry x="25" y="235" width="700" height="20" as="geometry" />
+        </mxCell>
+
+
+        <!-- ==================== BOTTOM RIGHT: AI-REASONING (ORANGE BOX) ==================== -->
+        <!-- THE 6 REAL DB MIGRATION TRANSFORMATION PHASES FROM SKILL.MD -->
+        <mxCell id="box_ai" value="&lt;b style=&quot;font-size:14px; color:#f97316;&quot;&gt;AI-Reasoning&lt;/b&gt; &lt;span style=&quot;font-size:10px; color:#64748b;&quot;&gt;&amp;bull; 6-Stage Database V2 Modernization Cycle (officialboomi-X3979C-dbv2da-prod)&lt;/span&gt;" style="swimlane;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#f97316;strokeWidth=2.5;fontColor=#f97316;fontStyle=1;startSize=28;rounded=1;arcSize=2;" vertex="1" parent="box_ai_engine">
+          <mxGeometry x="400" y="340" width="910" height="360" as="geometry" />
+        </mxCell>
+
+        <!-- Center Hub: Database V2 Modernization Engine -->
+        <mxCell id="node_core" value="&lt;b style=&quot;font-size:16px; color:#ea580c;&quot;&gt;DB V2&lt;/b&gt;&lt;br/&gt;&lt;b style=&quot;font-size:9px; color:#c2410c; letter-spacing:1px;&quot;&gt;ENGINE&lt;/b&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff7ed;strokeColor=#f97316;strokeWidth=2.5;align=center;arcSize=18;" vertex="1" parent="box_ai">
+          <mxGeometry x="405" y="140" width="100" height="90" as="geometry" />
+        </mxCell>
+
+        <!-- Phase 1: Connection Modernization -->
+        <mxCell id="trans_p1" value="&lt;b style=&quot;font-size:11px; color:#0f172a;&quot;&gt;1. Connection Modernization&lt;/b&gt;&lt;br/&gt;&lt;span style=&quot;font-size:9px; color:#475569;&quot;&gt;Convert Legacy JDBC Settings &amp;rarr;&lt;br/&gt;DB V2 Generic Driver Settings&lt;/span&gt;&lt;br/&gt;&lt;span style=&quot;font-size:8px; color:#ea580c; font-family:monospace;&quot;&gt;officialboomi-X3979C-dbv2da-prod&lt;/span&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff7ed;strokeColor=#f97316;strokeWidth=1.5;align=center;" vertex="1" parent="box_ai">
+          <mxGeometry x="345" y="40" width="220" height="65" as="geometry" />
+        </mxCell>
+
+        <!-- Phase 2: Profile to JSON Synthesis -->
+        <mxCell id="trans_p2" value="&lt;b style=&quot;font-size:11px; color:#0f172a;&quot;&gt;2. Profile &amp;rarr; JSON Synthesis&lt;/b&gt;&lt;br/&gt;&lt;span style=&quot;font-size:9px; color:#475569;&quot;&gt;Synthesize flat profile.db columns into&lt;br/&gt;hierarchical JSON Request &amp;amp; Response&lt;/span&gt;&lt;br/&gt;&lt;span style=&quot;font-size:8px; color:#ea580c; font-family:monospace;&quot;&gt;JSONRootValue &amp;gt; Object &amp;gt; Entries&lt;/span&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff7ed;strokeColor=#f97316;strokeWidth=1.5;align=center;" vertex="1" parent="box_ai">
+          <mxGeometry x="645" y="70" width="230" height="70" as="geometry" />
+        </mxCell>
+
+        <!-- Phase 3: DB V2 Operation Assembly -->
+        <mxCell id="trans_p3" value="&lt;b style=&quot;font-size:11px; color:#0f172a;&quot;&gt;3. Operation Assembly&lt;/b&gt;&lt;br/&gt;&lt;span style=&quot;font-size:9px; color:#475569;&quot;&gt;GenericOperationConfig, objectTypeId,&lt;br/&gt;Action Type (UPDATE/CREATE/GET)&lt;/span&gt;&lt;br/&gt;&lt;span style=&quot;font-size:8px; color:#ea580c;&quot;&gt;Link Request &amp;amp; Response Profiles&lt;/span&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff7ed;strokeColor=#f97316;strokeWidth=1.5;align=center;" vertex="1" parent="box_ai">
+          <mxGeometry x="645" y="195" width="230" height="70" as="geometry" />
+        </mxCell>
+
+        <!-- Phase 4: Dynamic SQL Synthesis -->
+        <mxCell id="trans_p4" value="&lt;b style=&quot;font-size:11px; color:#0f172a;&quot;&gt;4. Dynamic SQL Synthesis&lt;/b&gt;&lt;br/&gt;&lt;span style=&quot;font-size:9px; color:#475569;&quot;&gt;Construct Prepared Statements &amp;amp; Conditions&lt;br/&gt;Operators: =, &amp;lt;&amp;gt;, &amp;gt;, &amp;lt;, LIKE&lt;/span&gt;&lt;br/&gt;&lt;span style=&quot;font-size:8px; color:#ea580c;&quot;&gt;SET clause &amp;amp; WHERE condition logic&lt;/span&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff7ed;strokeColor=#f97316;strokeWidth=1.5;align=center;" vertex="1" parent="box_ai">
+          <mxGeometry x="345" y="270" width="220" height="65" as="geometry" />
+        </mxCell>
+
+        <!-- Phase 5: Map Shape Re-Wiring -->
+        <mxCell id="trans_p5" value="&lt;b style=&quot;font-size:11px; color:#0f172a;&quot;&gt;5. Map Shape Re-Wiring&lt;/b&gt;&lt;br/&gt;&lt;span style=&quot;font-size:9px; color:#475569;&quot;&gt;Swap fromProfile/toProfile to JSON ID&lt;br/&gt;Remap field keys &amp;amp; from/toKeyPath&lt;/span&gt;&lt;br/&gt;&lt;span style=&quot;font-size:8px; color:#ea580c;&quot;&gt;Preserve business mapping rules&lt;/span&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff7ed;strokeColor=#f97316;strokeWidth=1.5;align=center;" vertex="1" parent="box_ai">
+          <mxGeometry x="45" y="195" width="230" height="70" as="geometry" />
+        </mxCell>
+
+        <!-- Phase 6: Process Shape Re-Wiring & QA Review -->
+        <mxCell id="trans_p6" value="&lt;b style=&quot;font-size:11px; color:#0f172a;&quot;&gt;6. Process Shape Re-Wiring&lt;/b&gt;&lt;br/&gt;&lt;span style=&quot;font-size:9px; color:#475569;&quot;&gt;Rewire &amp;lt;connectoraction&amp;gt; steps to dbv2da-prod&lt;br/&gt;Set new Connection &amp;amp; Operation IDs&lt;/span&gt;&lt;br/&gt;&lt;span style=&quot;font-size:8px; color:#ea580c;&quot;&gt;Peer Review QA &amp;amp; Excel Audit Report&lt;/span&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff7ed;strokeColor=#f97316;strokeWidth=1.5;align=center;" vertex="1" parent="box_ai">
+          <mxGeometry x="45" y="70" width="230" height="70" as="geometry" />
+        </mxCell>
+
+        <!-- Orbital Flow Connectors (1->2->3->4->5->6->1) -->
+        <mxCell id="cyc_1_2" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#f97316;strokeWidth=2;dashed=1;" edge="1" parent="box_ai" source="trans_p1" target="trans_p2">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="cyc_2_3" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#f97316;strokeWidth=2;dashed=1;" edge="1" parent="box_ai" source="trans_p2" target="trans_p3">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="cyc_3_4" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#f97316;strokeWidth=2;dashed=1;" edge="1" parent="box_ai" source="trans_p3" target="trans_p4">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="cyc_4_5" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#f97316;strokeWidth=2;dashed=1;" edge="1" parent="box_ai" source="trans_p4" target="trans_p5">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="cyc_5_6" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#f97316;strokeWidth=2;dashed=1;" edge="1" parent="box_ai" source="trans_p5" target="trans_p6">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="cyc_6_1" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#f97316;strokeWidth=2;dashed=1;" edge="1" parent="box_ai" source="trans_p6" target="trans_p1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+
+        <!-- ==================== INTER-CONTAINER ARROWS MATCHING REFERENCE ==================== -->
+
+        <!-- 1. From UI Down to Runtime Engine (Primary Flow) -->
+        <mxCell id="flow_ui_runtime" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#ef4444;strokeWidth=2.5;dashed=1;" edge="1" parent="1" source="node_ui" target="node_runtime">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="650" y="195" />
+              <mxPoint x="210" y="195" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+
+        <!-- 2. "Feed to KB" (Runtime -> KB) with Firewall label -->
+        <mxCell id="flow_feed_kb" value="&lt;b style=&quot;background-color:#ffffff; color:#0f172a; font-size:11px;&quot;&gt;&amp;nbsp;Feed to KB 🧱&amp;nbsp;&lt;/b&gt;" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#ef4444;strokeWidth=2.5;dashed=1;labelBackgroundColor=#ffffff;" edge="1" parent="box_ai_engine" source="node_runtime" target="box_kb">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="160" y="60" />
+              <mxPoint x="400" y="60" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+
+        <!-- 3. "Fetch from KB" (KB -> Runtime) -->
+        <mxCell id="flow_fetch_kb" value="&lt;b style=&quot;background-color:#ffffff; color:#0f172a; font-size:11px;&quot;&gt;&amp;nbsp;Fetch from KB&amp;nbsp;&lt;/b&gt;" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#ef4444;strokeWidth=2.5;dashed=1;labelBackgroundColor=#ffffff;" edge="1" parent="box_ai_engine" source="box_kb" target="node_runtime">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="400" y="165" />
+              <mxPoint x="290" y="165" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+
+        <!-- 4. "Invoke AI" (Runtime -> AI Reasoning) -->
+        <mxCell id="flow_invoke_ai" value="&lt;b style=&quot;background-color:#ffffff; color:#0f172a; font-size:11px;&quot;&gt;&amp;nbsp;Invoke AI&amp;nbsp;&lt;/b&gt;" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#ef4444;strokeWidth=2.5;dashed=1;labelBackgroundColor=#ffffff;" edge="1" parent="box_ai_engine" source="node_runtime" target="box_ai">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="340" y="137" />
+              <mxPoint x="340" y="450" />
+              <mxPoint x="400" y="450" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+
+        <!-- 5. "AI Response" (AI Reasoning -> Runtime) -->
+        <mxCell id="flow_ai_resp" value="&lt;b style=&quot;background-color:#ffffff; color:#16a34a; font-size:11px;&quot;&gt;&amp;nbsp;AI Response&amp;nbsp;&lt;/b&gt;" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#16a34a;strokeWidth=2.5;dashed=1;labelBackgroundColor=#ffffff;" edge="1" parent="box_ai_engine" source="box_ai" target="node_runtime">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="370" y="550" />
+              <mxPoint x="370" y="175" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
