@@ -4,6 +4,12 @@ An end-to-end automated and guided migration suite for Dell Boomi legacy Databas
 
 ---
 
+## 📐 System Architecture
+
+![Boomi DB Migration Agent Architecture](db_migration_architecture.svg)
+
+---
+
 ## 🚀 Overview
 
 Transitioning enterprise Boomi integration architectures from legacy Database connectors to Database V2 involves complex dependencies across multiple component layers. This repository provides:
