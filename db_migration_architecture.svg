@@ -1,8 +1,8 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 760" width="100%" height="100%" style="background-color: #fafbfc; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1300 780" width="100%" height="100%" style="background-color: #fafbfc; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;">
   <defs>
     <!-- Background Dot Pattern matching reference -->
     <pattern id="dot-grid" x="0" y="0" width="24" height="24" patternUnits="userSpaceOnUse">
-      <circle cx="2" cy="2" r="1" fill="#cbd5e1" opacity="0.6" />
+      <circle cx="2" cy="2" r="1.2" fill="#94a3b8" opacity="0.35" />
     </pattern>
 
     <!-- Markers for Flow Arrows -->
@@ -19,17 +19,17 @@
       <polygon points="0 0, 9 3.5, 0 7" fill="#16a34a" />
     </marker>
 
-    <!-- Box Dropshadow -->
+    <!-- Card Dropshadow -->
     <filter id="card-shadow" x="-3%" y="-3%" width="106%" height="108%">
-      <feDropShadow dx="0" dy="2" stdDeviation="4" flood-color="#0f172a" flood-opacity="0.06" />
+      <feDropShadow dx="0" dy="2" stdDeviation="4" flood-color="#0f172a" flood-opacity="0.08" />
     </filter>
 
     <!-- Gradients -->
     <linearGradient id="cloud-grad" x1="0%" y1="0%" x2="100%" y2="100%">
       <stop offset="0%" stop-color="#ffffff" />
-      <stop offset="100%" stop-color="#f1f5f9" />
+      <stop offset="100%" stop-color="#f0f9ff" />
     </linearGradient>
-    <linearGradient id="chip-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+    <linearGradient id="core-chip-grad" x1="0%" y1="0%" x2="100%" y2="100%">
       <stop offset="0%" stop-color="#fff7ed" />
       <stop offset="100%" stop-color="#fed7aa" />
     </linearGradient>
@@ -39,27 +39,26 @@
   <rect width="100%" height="100%" fill="url(#dot-grid)" />
 
   <!-- ================= OUTER BOUNDARY: GREEN CONTAINER ================= -->
-  <rect x="25" y="25" width="1230" height="710" rx="14" fill="#ffffff" stroke="#16a34a" stroke-width="3" filter="url(#card-shadow)" />
+  <rect x="25" y="25" width="1250" height="730" rx="14" fill="#ffffff" stroke="#16a34a" stroke-width="3" filter="url(#card-shadow)" />
   
   <!-- Outer Header Title -->
-  <text x="55" y="70" font-size="24" font-weight="800" fill="#16a34a" letter-spacing="0.5">DB-Migration-Agent</text>
-  <text x="55" y="88" font-size="11" font-weight="600" fill="#64748b">Dell Boomi Legacy Database &rarr; Database V2 Automated Modernization Suite</text>
+  <text x="55" y="68" font-size="23" font-weight="800" fill="#16a34a" letter-spacing="0.5">Boomi Database V2 Migration Agent</text>
+  <text x="55" y="87" font-size="11" font-weight="600" fill="#64748b">End-to-End Modernization Suite: Legacy Database &rarr; Database V2 (officialboomi-X3979C-dbv2da-prod)</text>
 
   <!-- Top Center: Boomi Agent UI (User & Web Dashboard) -->
-  <g transform="translate(470, 32)">
-    <!-- User Avatar & Monitor -->
+  <g transform="translate(485, 30)">
     <circle cx="22" cy="14" r="12" fill="#0284c7" />
     <circle cx="22" cy="11" r="5" fill="#ffffff" />
     <path d="M13 22 C13 18, 31 18, 31 22 Z" fill="#ffffff" />
     <rect x="4" y="24" width="36" height="20" rx="2" fill="#334155" />
     <rect x="7" y="26" width="30" height="14" rx="1" fill="#38bdf8" />
     <polygon points="18,44 26,44 28,47 16,47" fill="#334155" />
-    <text x="22" y="60" font-size="12" font-weight="800" fill="#0f172a" text-anchor="middle">Boomi Agent UI</text>
-    <text x="22" y="72" font-size="9.5" font-weight="600" fill="#64748b" text-anchor="middle">Migration Web Hub (localhost:8000)</text>
+    <text x="22" y="60" font-size="12" font-weight="800" fill="#0f172a" text-anchor="middle">Migration Hub UI</text>
+    <text x="22" y="73" font-size="9" font-weight="600" fill="#64748b" text-anchor="middle">Mode A (Single) | Mode B (Bulk Folder)</text>
   </g>
 
-  <!-- Top Right: Legend (Exact Match to Reference Style) -->
-  <g transform="translate(930, 40)">
+  <!-- Top Right: Legend -->
+  <g transform="translate(950, 36)">
     <!-- Red Flow -->
     <line x1="0" y1="8" x2="45" y2="8" stroke="#ef4444" stroke-width="2.5" stroke-dasharray="5,4" marker-end="url(#arr-red)" />
     <text x="56" y="12" font-size="11" font-weight="600" fill="#334155">Primary Flow</text>
@@ -71,53 +70,55 @@
     <!-- Orange Flow -->
     <line x1="0" y1="48" x2="45" y2="48" stroke="#f97316" stroke-width="2.5" stroke-dasharray="5,4" marker-end="url(#arr-orange)" />
     <text x="56" y="52" font-size="11" font-weight="600" fill="#334155">Transformation Flow</text>
+
+    <!-- Green Flow -->
+    <line x1="0" y1="68" x2="45" y2="68" stroke="#16a34a" stroke-width="2.5" stroke-dasharray="5,4" marker-end="url(#arr-green)" />
+    <text x="56" y="72" font-size="11" font-weight="600" fill="#334155">Deployment Response</text>
   </g>
 
   <!-- ================= MAIN INNER BOX: RED BORDER (AI-ENGINE) ================= -->
-  <rect x="45" y="110" width="1190" height="605" rx="12" fill="#ffffff" stroke="#ef4444" stroke-width="2.5" />
+  <rect x="45" y="112" width="1210" height="625" rx="12" fill="#ffffff" stroke="#ef4444" stroke-width="2.5" />
   
-  <!-- Left Header Icon & Label: AI-Engine -->
-  <g transform="translate(65, 125)">
+  <!-- Left Header Icon & Label -->
+  <g transform="translate(65, 126)">
     <circle cx="16" cy="16" r="14" fill="#2563eb" />
     <text x="16" y="21" font-size="12" font-weight="900" fill="#ffffff" text-anchor="middle">AI</text>
-    <text x="38" y="23" font-size="20" font-weight="800" fill="#2563eb">AI-Engine</text>
-    <text x="38" y="37" font-size="10" font-weight="600" fill="#64748b">FastAPI Migration Hub &amp; Orchestrator</text>
+    <text x="38" y="23" font-size="19" font-weight="800" fill="#2563eb">AI-Engine</text>
+    <text x="38" y="38" font-size="10" font-weight="600" fill="#64748b">MigrationTools Orchestration &amp; API Integration</text>
   </g>
 
   <!-- ================= LEFT COLUMN: RUNTIME & PLATFORM ================= -->
   
-  <!-- Boomi Runtime Engine (Desktop / Server Monitor Icon) -->
-  <g transform="translate(195, 225)">
-    <rect x="0" y="0" width="105" height="75" rx="6" fill="#ffffff" stroke="#334155" stroke-width="2.5" filter="url(#card-shadow)" />
-    <rect x="7" y="7" width="91" height="61" rx="3" fill="#f8fafc" />
-    <!-- Stand -->
-    <rect x="44" y="75" width="17" height="20" fill="#334155" />
-    <polygon points="30,95 75,95 70,91 35,91" fill="#334155" />
-    <!-- Atom Core graphic inside monitor -->
-    <circle cx="52" cy="37" r="16" fill="#fee2e2" stroke="#ef4444" stroke-width="1.5" />
-    <circle cx="52" cy="37" r="5" fill="#ef4444" />
-    <ellipse cx="52" cy="37" rx="18" ry="7" fill="none" stroke="#ef4444" stroke-width="1.2" transform="rotate(30 52 37)" />
-    <ellipse cx="52" cy="37" rx="18" ry="7" fill="none" stroke="#ef4444" stroke-width="1.2" transform="rotate(-30 52 37)" />
+  <!-- Boomi Runtime Engine -->
+  <g transform="translate(195, 230)">
+    <rect x="0" y="0" width="115" height="80" rx="6" fill="#ffffff" stroke="#334155" stroke-width="2.5" filter="url(#card-shadow)" />
+    <rect x="7" y="7" width="101" height="66" rx="3" fill="#f8fafc" />
+    <rect x="48" y="80" width="19" height="20" fill="#334155" />
+    <polygon points="32,100 83,100 78,96 37,96" fill="#334155" />
+    <!-- Atom Core Icon -->
+    <circle cx="57" cy="40" r="17" fill="#fee2e2" stroke="#ef4444" stroke-width="1.5" />
+    <circle cx="57" cy="40" r="5" fill="#ef4444" />
+    <ellipse cx="57" cy="40" rx="19" ry="7" fill="none" stroke="#ef4444" stroke-width="1.2" transform="rotate(30 57 40)" />
+    <ellipse cx="57" cy="40" rx="19" ry="7" fill="none" stroke="#ef4444" stroke-width="1.2" transform="rotate(-30 57 40)" />
     
-    <text x="52" y="116" font-size="13" font-weight="800" fill="#0f172a" text-anchor="middle">Boomi Runtime Engine</text>
-    <text x="52" y="130" font-size="10" font-weight="600" fill="#64748b" text-anchor="middle">Migration Tools &amp; Client</text>
-    <text x="52" y="142" font-size="9" font-weight="500" fill="#0284c7" text-anchor="middle">Mode A (Single) &amp; Mode B (Bulk)</text>
+    <text x="57" y="122" font-size="13" font-weight="800" fill="#0f172a" text-anchor="middle">Boomi Runtime Engine</text>
+    <text x="57" y="137" font-size="10" font-weight="600" fill="#64748b" text-anchor="middle">FastAPI Migration Hub</text>
+    <text x="57" y="149" font-size="9" font-weight="600" fill="#0284c7" text-anchor="middle">SSE Live Event Stream</text>
   </g>
 
   <!-- Metadata Exchange Bidirectional Arrows -->
-  <g transform="translate(247, 395)">
+  <g transform="translate(252, 405)">
     <path d="M-12,0 C-12,-14 12,-14 12,0 L12,12" fill="none" stroke="#0f172a" stroke-width="3" />
     <polygon points="7,9 12,19 17,9" fill="#0f172a" />
     <path d="M12,28 C12,42 -12,42 -12,28 L-12,16" fill="none" stroke="#0f172a" stroke-width="3" />
     <polygon points="-7,19 -12,9 -17,19" fill="#0f172a" />
     <text x="0" y="52" font-size="12" font-weight="800" fill="#0f172a" text-anchor="middle">Metadata</text>
     <text x="0" y="66" font-size="12" font-weight="800" fill="#0f172a" text-anchor="middle">Exchange</text>
-    <text x="0" y="79" font-size="9.5" font-weight="600" fill="#64748b" text-anchor="middle">Component API</text>
+    <text x="0" y="79" font-size="9" font-weight="600" fill="#64748b" text-anchor="middle">Component API</text>
   </g>
 
-  <!-- Boomi Enterprise Platform (Cloud Box) -->
-  <g transform="translate(135, 500)">
-    <!-- Cloud shape representation -->
+  <!-- Boomi Enterprise Platform Cloud -->
+  <g transform="translate(135, 515)">
     <path d="M 45,55 
              A 32,32 0 0,1 85,20 
              A 40,40 0 0,1 145,20 
@@ -129,226 +130,220 @@
              A 24,24 0 0,1 45,55 Z" 
           fill="url(#cloud-grad)" stroke="#0284c7" stroke-width="2" filter="url(#card-shadow)" />
     
-    <!-- Boomi "b" Logo Circle -->
     <circle cx="62" cy="65" r="18" fill="#0284c7" />
     <text x="62" y="73" font-size="20" font-weight="900" fill="#ffffff" text-anchor="middle">b</text>
     
-    <!-- Platform Labels -->
     <text x="90" y="57" font-size="11.5" font-weight="800" fill="#0f172a">Boomi Enterprise Platform</text>
-    <text x="90" y="72" font-size="9.5" font-weight="600" fill="#64748b">AtomSphere Platform Services</text>
-    <text x="90" y="86" font-size="9" font-weight="700" fill="#16a34a">Branch: dbv2_merging</text>
+    <text x="90" y="71" font-size="9" font-weight="600" fill="#64748b">AtomSphere Integration APIs</text>
+    <text x="90" y="85" font-size="9" font-weight="700" fill="#16a34a">Branch: dbv2_merging</text>
     <text x="90" y="98" font-size="8.5" font-weight="700" fill="#ef4444">Main Branch Guard: Active 🛡️</text>
   </g>
 
   <!-- ================= TOP RIGHT: KNOWLEDGE-BASE (BLUE BOX) ================= -->
-  <!-- SHOWCASING DISCOVERY, AUDITING & WHERE-USED DEPENDENCY RESOLUTION -->
-  <g transform="translate(460, 125)">
-    <rect x="0" y="0" width="755" height="215" rx="10" fill="#ffffff" stroke="#2563eb" stroke-width="2.5" />
-    <text x="20" y="26" font-size="16" font-weight="800" fill="#2563eb">Knowledge-Base</text>
-    <text x="145" y="26" font-size="11" font-weight="600" fill="#64748b">&mdash; Component Discovery, Audit &amp; Where-Used Resolution</text>
+  <!-- DISCOVERY SCANNING, HIERARCHICAL AUDITING & WHERE-USED DEPENDENCY TRACKING -->
+  <g transform="translate(470, 126)">
+    <rect x="0" y="0" width="765" height="225" rx="10" fill="#ffffff" stroke="#2563eb" stroke-width="2.5" />
+    <text x="20" y="27" font-size="16" font-weight="800" fill="#2563eb">Knowledge-Base</text>
+    <text x="145" y="27" font-size="11" font-weight="600" fill="#64748b">&mdash; Hierarchical Subfolder Discovery &amp; Where-Used Dependency Engine</text>
 
-    <!-- Top Ingestion Flow: Discovery & Extraction -->
-    <g transform="translate(35, 45)">
+    <!-- Top Row: Discovery Pipeline -->
+    <g transform="translate(30, 46)">
       
-      <!-- Step 1: Data Cleaning (Filtering non-DB connectors) -->
+      <!-- Stage 1: Subfolder Tree Resolution -->
       <g transform="translate(0, 0)">
         <polygon points="26,0 55,14 55,44 26,58 -3,44 -3,14" fill="#eff6ff" stroke="#3b82f6" stroke-width="1.8" />
-        <text x="26" y="32" font-size="18" text-anchor="middle">🧹</text>
-        <text x="26" y="74" font-size="10" font-weight="700" fill="#0f172a" text-anchor="middle">Data Cleaning</text>
-        <text x="26" y="87" font-size="8.5" font-weight="500" fill="#64748b" text-anchor="middle">Isolate Legacy DB</text>
-        <text x="26" y="98" font-size="8" font-weight="500" fill="#94a3b8" text-anchor="middle">(Filter Disk/HTTP)</text>
+        <text x="26" y="32" font-size="18" text-anchor="middle">📁</text>
+        <text x="26" y="74" font-size="10" font-weight="700" fill="#0f172a" text-anchor="middle">Subfolder Audit</text>
+        <text x="26" y="87" font-size="8.5" font-weight="500" fill="#64748b" text-anchor="middle">Recursive parentId</text>
+        <text x="26" y="98" font-size="8" font-weight="500" fill="#94a3b8" text-anchor="middle">Tree &amp; Rollup Counts</text>
       </g>
 
       <!-- Connecting Arrow 1 -->
       <path d="M58,29 L82,29" stroke="#3b82f6" stroke-width="2" marker-end="url(#arr-blue)" />
 
-      <!-- Step 2: Indexing (Where-Used Dependency Traversal) -->
+      <!-- Stage 2: Legacy Component Discovery -->
       <g transform="translate(90, 0)">
         <polygon points="26,0 55,14 55,44 26,58 -3,44 -3,14" fill="#eff6ff" stroke="#3b82f6" stroke-width="1.8" />
-        <text x="26" y="32" font-size="18" text-anchor="middle">🔗</text>
-        <text x="26" y="74" font-size="10" font-weight="700" fill="#0f172a" text-anchor="middle">Indexing</text>
-        <text x="26" y="87" font-size="8.5" font-weight="500" fill="#64748b" text-anchor="middle">Where-Used Graph</text>
-        <text x="26" y="98" font-size="8" font-weight="500" fill="#94a3b8" text-anchor="middle">(Maps/Caches/Procs)</text>
+        <text x="26" y="32" font-size="18" text-anchor="middle">🔍</text>
+        <text x="26" y="74" font-size="10" font-weight="700" fill="#0f172a" text-anchor="middle">DB Discovery</text>
+        <text x="26" y="87" font-size="8.5" font-weight="500" fill="#64748b" text-anchor="middle">Legacy Conns/Opers</text>
+        <text x="26" y="98" font-size="8" font-weight="500" fill="#94a3b8" text-anchor="middle">&amp; profile.db Profiles</text>
       </g>
 
       <!-- Connecting Arrow 2 -->
       <path d="M148,29 L172,29" stroke="#3b82f6" stroke-width="2" marker-end="url(#arr-blue)" />
 
-      <!-- Step 3: Storing (Metadata Cache) -->
+      <!-- Stage 3: Where-Used Dependency Tracking -->
       <g transform="translate(180, 0)">
         <polygon points="26,0 55,14 55,44 26,58 -3,44 -3,14" fill="#eff6ff" stroke="#3b82f6" stroke-width="1.8" />
-        <text x="26" y="32" font-size="18" text-anchor="middle">💾</text>
-        <text x="26" y="74" font-size="10" font-weight="700" fill="#0f172a" text-anchor="middle">Storing</text>
-        <text x="26" y="87" font-size="8.5" font-weight="500" fill="#64748b" text-anchor="middle">Metadata Cache</text>
-        <text x="26" y="98" font-size="8" font-weight="500" fill="#94a3b8" text-anchor="middle">(Folder &amp; Comp IDs)</text>
+        <text x="26" y="32" font-size="18" text-anchor="middle">🔗</text>
+        <text x="26" y="74" font-size="10" font-weight="700" fill="#0f172a" text-anchor="middle">Where-Used Graph</text>
+        <text x="26" y="87" font-size="8.5" font-weight="500" fill="#64748b" text-anchor="middle">ComponentReference</text>
+        <text x="26" y="98" font-size="8" font-weight="500" fill="#94a3b8" text-anchor="middle">Maps/Caches/Processes</text>
       </g>
     </g>
 
-    <!-- Center DB Icon Flow -->
-    <g transform="translate(370, 70)">
+    <!-- Center DB Icon: In-Memory Component & Folder Cache -->
+    <g transform="translate(378, 72)">
       <path d="M0,18 C22,0 45,0 68,16" stroke="#3b82f6" stroke-width="2" fill="none" marker-end="url(#arr-blue)" />
       
-      <!-- Database Cylinder -->
       <g transform="translate(76, 8)">
         <path d="M0,6 C0,2.5 8,0 18,0 C28,0 36,2.5 36,6 L36,30 C36,33.5 28,36 18,36 C8,36 0,33.5 0,30 Z" fill="#eff6ff" stroke="#2563eb" stroke-width="2" />
         <ellipse cx="18" cy="6" rx="18" ry="6" fill="#bfdbfe" stroke="#2563eb" stroke-width="1.5" />
         <path d="M0,14 C0,17.5 8,20 18,20 C28,20 36,17.5 36,14" stroke="#2563eb" stroke-width="1.5" fill="none" />
         <path d="M0,22 C0,25.5 8,28 18,28 C28,28 36,25.5 36,22" stroke="#2563eb" stroke-width="1.5" fill="none" />
-        <text x="18" y="47" font-size="8" font-weight="700" fill="#2563eb" text-anchor="middle">Audit DB</text>
+        <text x="18" y="47" font-size="8" font-weight="700" fill="#2563eb" text-anchor="middle">Metadata DB</text>
       </g>
 
       <path d="M122,25 C142,40 162,40 180,26" stroke="#3b82f6" stroke-width="2" fill="none" marker-end="url(#arr-blue)" />
     </g>
 
-    <!-- Right Retrieval Flow: Search, Classification & Filtering -->
-    <g transform="translate(560, 45)">
+    <!-- Right Retrieval Flow: Filtering & Action Classification -->
+    <g transform="translate(565, 46)">
       
-      <!-- Top Matched Records (Scope Isolation) -->
+      <!-- Safe Filter (Non-DB Isolation) -->
       <g transform="translate(0, 0)">
         <polygon points="22,0 48,12 48,38 22,50 -4,38 -4,12" fill="#eff6ff" stroke="#3b82f6" stroke-width="1.8" />
-        <text x="22" y="28" font-size="16" text-anchor="middle">📋</text>
-        <text x="22" y="66" font-size="9.5" font-weight="700" fill="#0f172a" text-anchor="middle">Top Matched</text>
-        <text x="22" y="78" font-size="8.5" font-weight="600" fill="#64748b" text-anchor="middle">Records</text>
-        <text x="22" y="89" font-size="8" font-weight="500" fill="#94a3b8" text-anchor="middle">(Folder Scoped)</text>
+        <text x="22" y="28" font-size="16" text-anchor="middle">🛡️</text>
+        <text x="22" y="66" font-size="9.5" font-weight="700" fill="#0f172a" text-anchor="middle">Non-DB Filter</text>
+        <text x="22" y="78" font-size="8.5" font-weight="600" fill="#64748b" text-anchor="middle">Preserve Disk/HTTP</text>
+        <text x="22" y="89" font-size="8" font-weight="500" fill="#94a3b8" text-anchor="middle">&amp; SFTP Connectors</text>
       </g>
 
-      <!-- Filtering (Operation Statements: Dynamic Update / Insert / Get) -->
+      <!-- Action Classifier -->
       <g transform="translate(70, 0)">
         <polygon points="22,0 48,12 48,38 22,50 -4,38 -4,12" fill="#eff6ff" stroke="#3b82f6" stroke-width="1.8" />
-        <text x="22" y="28" font-size="16" text-anchor="middle">🌪️</text>
-        <text x="22" y="66" font-size="9.5" font-weight="700" fill="#0f172a" text-anchor="middle">Filtering</text>
-        <text x="22" y="78" font-size="8.5" font-weight="600" fill="#64748b" text-anchor="middle">Action Classify</text>
-        <text x="22" y="89" font-size="8" font-weight="500" fill="#94a3b8" text-anchor="middle">(Update/Insert/Get)</text>
+        <text x="22" y="28" font-size="16" text-anchor="middle">⚖️</text>
+        <text x="22" y="66" font-size="9.5" font-weight="700" fill="#0f172a" text-anchor="middle">Action Classify</text>
+        <text x="22" y="78" font-size="8.5" font-weight="600" fill="#64748b" text-anchor="middle">Dynamic Update/Insert</text>
+        <text x="22" y="89" font-size="8" font-weight="500" fill="#94a3b8" text-anchor="middle">Delete / Standard Get</text>
       </g>
 
-      <!-- Indexed Search (Metadata & XML Retrieval) -->
+      <!-- Target Branch Inventory -->
       <g transform="translate(140, 0)">
         <polygon points="22,0 48,12 48,38 22,50 -4,38 -4,12" fill="#eff6ff" stroke="#3b82f6" stroke-width="1.8" />
-        <text x="22" y="28" font-size="16" text-anchor="middle">🔍</text>
-        <text x="22" y="66" font-size="9.5" font-weight="700" fill="#0f172a" text-anchor="middle">Indexed Search</text>
-        <text x="22" y="78" font-size="8.5" font-weight="600" fill="#64748b" text-anchor="middle">Branch XML</text>
-        <text x="22" y="89" font-size="8" font-weight="500" fill="#94a3b8" text-anchor="middle">(dbv2_merging)</text>
+        <text x="22" y="28" font-size="16" text-anchor="middle">📑</text>
+        <text x="22" y="66" font-size="9.5" font-weight="700" fill="#0f172a" text-anchor="middle">Scope Inventory</text>
+        <text x="22" y="78" font-size="8.5" font-weight="600" fill="#64748b" text-anchor="middle">Feature Branch</text>
+        <text x="22" y="89" font-size="8" font-weight="500" fill="#94a3b8" text-anchor="middle">Component XMLs</text>
       </g>
     </g>
 
-    <!-- Bottom Status Strip -->
-    <text x="20" y="200" font-size="9.5" font-weight="600" fill="#2563eb">&check; Scans 100% of Legacy Connections, Operations &amp; DB Profiles with Parent Reference Resolution</text>
+    <text x="20" y="210" font-size="9.5" font-weight="600" fill="#2563eb">&bull; Discovers all 6 component tiers: Connections, Operations, Profiles, Maps, Caches, and DB Processes</text>
   </g>
 
   <!-- ================= BOTTOM RIGHT: AI-REASONING (ORANGE BOX) ================= -->
-  <!-- SHOWCASING OUR 6-STEP TRANSFORMATION PIPELINE (CONNECTION, PROFILE, OPERATION, MAP, SHAPES, QA) -->
-  <g transform="translate(460, 355)">
-    <rect x="0" y="0" width="755" height="345" rx="10" fill="#ffffff" stroke="#f97316" stroke-width="2.5" />
+  <!-- THE 6 REAL DB MIGRATION TRANSFORMATION PHASES DEFINED IN SKILL.MD -->
+  <g transform="translate(470, 368)">
+    <rect x="0" y="0" width="765" height="355" rx="10" fill="#ffffff" stroke="#f97316" stroke-width="2.5" />
     <text x="20" y="28" font-size="16" font-weight="800" fill="#f97316">AI-Reasoning</text>
-    <text x="135" y="28" font-size="11" font-weight="600" fill="#64748b">&mdash; Autonomous Transformation Cycle &amp; DB V2 Assembly</text>
+    <text x="135" y="28" font-size="11" font-weight="600" fill="#64748b">&mdash; Database V2 Modernization Cycle (officialboomi-X3979C-dbv2da-prod)</text>
 
-    <!-- Central AI Hub & Chip -->
-    <g transform="translate(378, 175)">
-      <!-- Outer Hex/Chip -->
-      <rect x="-38" y="-38" width="76" height="76" rx="16" fill="url(#chip-grad)" stroke="#f97316" stroke-width="2.5" filter="url(#card-shadow)" />
-      <!-- Chip Pins -->
-      <line x1="-38" y1="-16" x2="-46" y2="-16" stroke="#f97316" stroke-width="2.5" />
-      <line x1="-38" y1="16" x2="-46" y2="16" stroke="#f97316" stroke-width="2.5" />
-      <line x1="38" y1="-16" x2="46" y2="-16" stroke="#f97316" stroke-width="2.5" />
-      <line x1="38" y1="16" x2="46" y2="16" stroke="#f97316" stroke-width="2.5" />
-      <line x1="-16" y1="-38" x2="-16" y2="-46" stroke="#f97316" stroke-width="2.5" />
-      <line x1="16" y1="-38" x2="16" y2="-46" stroke="#f97316" stroke-width="2.5" />
-      <line x1="-16" y1="38" x2="-16" y2="46" stroke="#f97316" stroke-width="2.5" />
-      <line x1="16" y1="38" x2="16" y2="46" stroke="#f97316" stroke-width="2.5" />
+    <!-- Center Hub: Database V2 Modernization Engine -->
+    <g transform="translate(382, 180)">
+      <rect x="-42" y="-42" width="84" height="84" rx="16" fill="url(#core-chip-grad)" stroke="#f97316" stroke-width="2.5" filter="url(#card-shadow)" />
       
-      <!-- AI Text & Brain -->
-      <text x="0" y="5" font-size="24" font-weight="900" fill="#ea580c" text-anchor="middle">AI</text>
-      <text x="0" y="19" font-size="8.5" font-weight="800" fill="#c2410c" text-anchor="middle">CORE</text>
+      <line x1="-42" y1="-18" x2="-50" y2="-18" stroke="#f97316" stroke-width="2.5" />
+      <line x1="-42" y1="18" x2="-50" y2="18" stroke="#f97316" stroke-width="2.5" />
+      <line x1="42" y1="-18" x2="50" y2="-18" stroke="#f97316" stroke-width="2.5" />
+      <line x1="42" y1="18" x2="50" y2="18" stroke="#f97316" stroke-width="2.5" />
+      <line x1="-18" y1="-42" x2="-18" y2="-50" stroke="#f97316" stroke-width="2.5" />
+      <line x1="18" y1="-42" x2="18" y2="-50" stroke="#f97316" stroke-width="2.5" />
+      <line x1="-18" y1="42" x2="-18" y2="50" stroke="#f97316" stroke-width="2.5" />
+      <line x1="18" y1="42" x2="18" y2="50" stroke="#f97316" stroke-width="2.5" />
+      
+      <text x="0" y="2" font-size="18" font-weight="900" fill="#ea580c" text-anchor="middle">DB V2</text>
+      <text x="0" y="16" font-size="8" font-weight="800" fill="#c2410c" text-anchor="middle">ENGINE</text>
     </g>
 
-    <!-- Orbital Cycle of Our Actual 6 DB Migration Stages -->
+    <!-- Cycle of the 6 Concrete DB Migration Phases from SKILL.md -->
 
-    <!-- Top: Step 1: Input Processing (Profile.db & SQL Parsing) -->
-    <g transform="translate(378, 52)">
-      <text x="0" y="-8" font-size="11" font-weight="800" fill="#0f172a" text-anchor="middle">Input Processing</text>
-      <text x="0" y="5" font-size="9" font-weight="600" fill="#64748b" text-anchor="middle">Parse Legacy profile.db SQL</text>
-      <text x="0" y="17" font-size="8.5" font-weight="500" fill="#ea580c" text-anchor="middle">Fields &amp; Conditions (=, &lt;&gt;, &gt;, &lt;)</text>
-      <text x="0" y="42" font-size="22" text-anchor="middle">⚙️</text>
+    <!-- Top: Phase 1: Connection Migration (JDBC -> DB V2 Generic) -->
+    <g transform="translate(382, 50)">
+      <text x="0" y="-8" font-size="11" font-weight="800" fill="#0f172a" text-anchor="middle">1. Connection Modernization</text>
+      <text x="0" y="6" font-size="9" font-weight="600" fill="#64748b" text-anchor="middle">Convert Legacy JDBC Settings</text>
+      <text x="0" y="18" font-size="8.5" font-weight="600" fill="#ea580c" text-anchor="middle">officialboomi-X3979C-dbv2da-prod</text>
+      <text x="0" y="44" font-size="22" text-anchor="middle">🔌</text>
     </g>
     <!-- Arrow 1 -> 2 -->
-    <path d="M425,72 C495,80 560,105 595,135" stroke="#f97316" stroke-width="2" stroke-dasharray="4,4" fill="none" marker-end="url(#arr-orange)" />
+    <path d="M435,70 C510,80 575,105 605,138" stroke="#f97316" stroke-width="2" stroke-dasharray="4,4" fill="none" marker-end="url(#arr-orange)" />
 
-    <!-- Top-Right: Step 2: Context Building (DB V2 Operation Synthesis) -->
-    <g transform="translate(620, 130)">
-      <text x="0" y="12" font-size="22" text-anchor="middle">📖</text>
-      <text x="0" y="32" font-size="11" font-weight="800" fill="#0f172a" text-anchor="middle">Context Building</text>
-      <text x="0" y="46" font-size="9" font-weight="600" fill="#64748b" text-anchor="middle">DB V2 Operation XML</text>
-      <text x="0" y="58" font-size="8.5" font-weight="500" fill="#ea580c" text-anchor="middle">objectTypeId, Dynamic Update SQL</text>
+    <!-- Top-Right: Phase 2: Profile to JSON Synthesis -->
+    <g transform="translate(625, 135)">
+      <text x="0" y="12" font-size="22" text-anchor="middle">📄</text>
+      <text x="0" y="32" font-size="11" font-weight="800" fill="#0f172a" text-anchor="middle">2. Profile &rarr; JSON Synthesis</text>
+      <text x="0" y="46" font-size="9" font-weight="600" fill="#64748b" text-anchor="middle">profile.db &rarr; JSON Profiles</text>
+      <text x="0" y="58" font-size="8.5" font-weight="500" fill="#ea580c" text-anchor="middle">JSONRootValue &gt; Object &gt; Entries</text>
     </g>
     <!-- Arrow 2 -> 3 -->
-    <path d="M620,200 C620,230 600,260 565,280" stroke="#f97316" stroke-width="2" stroke-dasharray="4,4" fill="none" marker-end="url(#arr-orange)" />
+    <path d="M625,205 C625,235 605,268 570,290" stroke="#f97316" stroke-width="2" stroke-dasharray="4,4" fill="none" marker-end="url(#arr-orange)" />
 
-    <!-- Bottom-Right: Step 3: Pattern Recognition (JSON Profile Generation) -->
-    <g transform="translate(585, 265)">
-      <text x="0" y="12" font-size="22" text-anchor="middle">🕸️</text>
-      <text x="0" y="32" font-size="11" font-weight="800" fill="#0f172a" text-anchor="middle">Pattern Recognition</text>
-      <text x="0" y="46" font-size="9" font-weight="600" fill="#64748b" text-anchor="middle">JSON Profile Generation</text>
-      <text x="0" y="58" font-size="8.5" font-weight="500" fill="#ea580c" text-anchor="middle">Request JSON &amp; Standard DB V2 Resp</text>
+    <!-- Bottom-Right: Phase 3: DB V2 Operation Assembly -->
+    <g transform="translate(595, 275)">
+      <text x="0" y="12" font-size="22" text-anchor="middle">⚙️</text>
+      <text x="0" y="32" font-size="11" font-weight="800" fill="#0f172a" text-anchor="middle">3. Operation Assembly</text>
+      <text x="0" y="46" font-size="9" font-weight="600" fill="#64748b" text-anchor="middle">GenericOperationConfig &amp; objectTypeId</text>
+      <text x="0" y="58" font-size="8.5" font-weight="500" fill="#ea580c" text-anchor="middle">Link Req/Resp JSON Profiles</text>
     </g>
     <!-- Arrow 3 -> 4 -->
-    <path d="M510,312 C460,332 410,332 378,320" stroke="#f97316" stroke-width="2" stroke-dasharray="4,4" fill="none" marker-end="url(#arr-orange)" />
+    <path d="M520,322 C470,342 415,342 382,330" stroke="#f97316" stroke-width="2" stroke-dasharray="4,4" fill="none" marker-end="url(#arr-orange)" />
 
-    <!-- Bottom: Step 4: Top Matched Records (Map Re-Wiring) -->
-    <g transform="translate(378, 255)">
+    <!-- Bottom: Phase 4: Dynamic SQL & Condition Synthesis -->
+    <g transform="translate(382, 265)">
       <text x="0" y="18" font-size="22" text-anchor="middle">🧠</text>
-      <text x="0" y="38" font-size="11" font-weight="800" fill="#0f172a" text-anchor="middle">Top Matched Records</text>
-      <text x="0" y="52" font-size="9" font-weight="600" fill="#64748b" text-anchor="middle">Map Element Re-Wiring</text>
-      <text x="0" y="64" font-size="8.5" font-weight="500" fill="#ea580c" text-anchor="middle">Remap DB Keys &rarr; JSON Profile Keys</text>
+      <text x="0" y="38" font-size="11" font-weight="800" fill="#0f172a" text-anchor="middle">4. Dynamic SQL Synthesis</text>
+      <text x="0" y="52" font-size="9" font-weight="600" fill="#64748b" text-anchor="middle">Prepared Statements &amp; WHERE Logic</text>
+      <text x="0" y="64" font-size="8.5" font-weight="500" fill="#ea580c" text-anchor="middle">Conditions: =, &lt;&gt;, &gt;, &lt;, LIKE</text>
     </g>
     <!-- Arrow 4 -> 5 -->
-    <path d="M315,320 C270,330 220,315 175,280" stroke="#f97316" stroke-width="2" stroke-dasharray="4,4" fill="none" marker-end="url(#arr-orange)" />
+    <path d="M315,330 C265,342 210,325 165,290" stroke="#f97316" stroke-width="2" stroke-dasharray="4,4" fill="none" marker-end="url(#arr-orange)" />
 
-    <!-- Bottom-Left: Step 5: Cross-Referencing Results (Process Shape Re-wiring) -->
-    <g transform="translate(155, 240)">
+    <!-- Bottom-Left: Phase 5: Map Shape Re-Wiring -->
+    <g transform="translate(150, 250)">
       <text x="0" y="12" font-size="22" text-anchor="middle">🔀</text>
-      <text x="0" y="32" font-size="11" font-weight="800" fill="#0f172a" text-anchor="middle">Cross-Referencing Results</text>
-      <text x="0" y="46" font-size="9" font-weight="600" fill="#64748b" text-anchor="middle">Process Shape Reconfiguration</text>
-      <text x="0" y="58" font-size="8.5" font-weight="500" fill="#ea580c" text-anchor="middle">connectoraction &rarr; dbv2da-prod</text>
+      <text x="0" y="32" font-size="11" font-weight="800" fill="#0f172a" text-anchor="middle">5. Map Shape Re-Wiring</text>
+      <text x="0" y="46" font-size="9" font-weight="600" fill="#64748b" text-anchor="middle">Swap from/toProfile to JSON</text>
+      <text x="0" y="58" font-size="8.5" font-weight="500" fill="#ea580c" text-anchor="middle">Remap field keys &amp; from/toKeyPath</text>
     </g>
     <!-- Arrow 5 -> 6 -->
-    <path d="M155,200 C155,165 175,130 210,105" stroke="#f97316" stroke-width="2" stroke-dasharray="4,4" fill="none" marker-end="url(#arr-orange)" />
+    <path d="M150,210 C150,175 170,138 205,110" stroke="#f97316" stroke-width="2" stroke-dasharray="4,4" fill="none" marker-end="url(#arr-orange)" />
 
-    <!-- Top-Left: Step 6: Structured Response (Code Review & Branch Commit) -->
-    <g transform="translate(185, 95)">
-      <text x="0" y="12" font-size="22" text-anchor="middle">📋</text>
-      <text x="0" y="32" font-size="11" font-weight="800" fill="#0f172a" text-anchor="middle">Structured Response</text>
-      <text x="0" y="46" font-size="9" font-weight="600" fill="#64748b" text-anchor="middle">Peer Review &amp; Excel Audit</text>
-      <text x="0" y="58" font-size="8.5" font-weight="500" fill="#ea580c" text-anchor="middle">Multi-sheet Report &amp; Branch Commit</text>
+    <!-- Top-Left: Phase 6: Process Shape Re-Wiring & QA Review -->
+    <g transform="translate(180, 100)">
+      <text x="0" y="12" font-size="22" text-anchor="middle">🔄</text>
+      <text x="0" y="32" font-size="11" font-weight="800" fill="#0f172a" text-anchor="middle">6. Process Shape Re-Wiring</text>
+      <text x="0" y="46" font-size="9" font-weight="600" fill="#64748b" text-anchor="middle">Rewire &lt;connectoraction&gt; Shapes</text>
+      <text x="0" y="58" font-size="8.5" font-weight="500" fill="#ea580c" text-anchor="middle">Set dbv2da-prod &amp; QA Peer Review</text>
     </g>
     <!-- Arrow 6 -> 1 -->
-    <path d="M230,80 C270,62 315,55 340,55" stroke="#f97316" stroke-width="2" stroke-dasharray="4,4" fill="none" marker-end="url(#arr-orange)" />
+    <path d="M230,85 C270,68 315,55 340,55" stroke="#f97316" stroke-width="2" stroke-dasharray="4,4" fill="none" marker-end="url(#arr-orange)" />
   </g>
 
   <!-- ================= INTER-CONTAINER CONNECTING FLOW ARROWS ================= -->
   
   <!-- 1. From UI Down to Boomi Runtime Engine (Red Dashed) -->
-  <path d="M492,85 L492,185 L310,185 L310,235" fill="none" stroke="#ef4444" stroke-width="2.5" stroke-dasharray="6,5" marker-end="url(#arr-red)" />
+  <path d="M508,82 L508,188 L320,188 L320,240" fill="none" stroke="#ef4444" stroke-width="2.5" stroke-dasharray="6,5" marker-end="url(#arr-red)" />
 
   <!-- 2. "Feed to KB" (Red Dashed from Runtime to KB with Firewall) -->
-  <path d="M260,225 L260,180 L455,180" fill="none" stroke="#ef4444" stroke-width="2.5" stroke-dasharray="6,5" marker-end="url(#arr-red)" />
-  <text x="365" y="172" font-size="12" font-weight="800" fill="#0f172a" text-anchor="middle">Feed to KB</text>
+  <path d="M260,230 L260,185 L465,185" fill="none" stroke="#ef4444" stroke-width="2.5" stroke-dasharray="6,5" marker-end="url(#arr-red)" />
+  <text x="375" y="177" font-size="12" font-weight="800" fill="#0f172a" text-anchor="middle">Feed to KB</text>
   <!-- Firewall Icon on Path -->
-  <g transform="translate(405, 166)">
+  <g transform="translate(415, 171)">
     <rect x="0" y="0" width="24" height="22" rx="4" fill="#dc2626" />
     <path d="M12,3 L20,7 L20,13 C20,18 12,20 12,20 C12,20 4,18 4,13 L4,7 Z" fill="#ffffff" stroke="#991b1b" stroke-width="1.2" />
     <path d="M12,8 L12,14 M9,11 L15,11" stroke="#dc2626" stroke-width="1.5" stroke-linecap="round" />
   </g>
 
   <!-- 3. "Fetch from KB" (Red Dashed from KB to Runtime Engine) -->
-  <path d="M455,290 L320,290 L320,260" fill="none" stroke="#ef4444" stroke-width="2.5" stroke-dasharray="6,5" marker-end="url(#arr-red)" />
-  <text x="385" y="282" font-size="12" font-weight="800" fill="#0f172a" text-anchor="middle">Fetch from KB</text>
+  <path d="M465,300 L330,300 L330,265" fill="none" stroke="#ef4444" stroke-width="2.5" stroke-dasharray="6,5" marker-end="url(#arr-red)" />
+  <text x="395" y="292" font-size="12" font-weight="800" fill="#0f172a" text-anchor="middle">Fetch from KB</text>
 
   <!-- 4. "Invoke AI" (Red Dashed from Runtime to AI-Reasoning) -->
-  <path d="M305,310 L305,455 L455,455" fill="none" stroke="#ef4444" stroke-width="2.5" stroke-dasharray="6,5" marker-end="url(#arr-red)" />
-  <text x="375" y="447" font-size="12" font-weight="800" fill="#0f172a" text-anchor="middle">Invoke AI</text>
+  <path d="M315,315 L315,465 L465,465" fill="none" stroke="#ef4444" stroke-width="2.5" stroke-dasharray="6,5" marker-end="url(#arr-red)" />
+  <text x="385" y="457" font-size="12" font-weight="800" fill="#0f172a" text-anchor="middle">Invoke AI</text>
 
   <!-- 5. "AI Response" (Green Dashed from AI-Reasoning back to Runtime) -->
-  <path d="M455,565 L265,565 L265,355" fill="none" stroke="#16a34a" stroke-width="2.5" stroke-dasharray="6,5" marker-end="url(#arr-green)" />
-  <text x="365" y="557" font-size="12" font-weight="800" fill="#16a34a" text-anchor="middle">AI Response</text>
+  <path d="M465,580 L265,580 L265,360" fill="none" stroke="#16a34a" stroke-width="2.5" stroke-dasharray="6,5" marker-end="url(#arr-green)" />
+  <text x="375" y="572" font-size="12" font-weight="800" fill="#16a34a" text-anchor="middle">AI Response</text>
 
 </svg>
