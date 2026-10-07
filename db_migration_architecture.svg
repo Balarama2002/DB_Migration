@@ -43,7 +43,7 @@
   
   <!-- Outer Header Title -->
   <text x="55" y="68" font-size="23" font-weight="800" fill="#16a34a" letter-spacing="0.5">Boomi Database V2 Migration Agent</text>
-  <text x="55" y="87" font-size="11" font-weight="600" fill="#64748b">End-to-End Modernization Suite: Legacy Database &rarr; Database V2 (officialboomi-X3979C-dbv2da-prod)</text>
+  <text x="55" y="87" font-size="11" font-weight="600" fill="#64748b">End-to-End Modernization Suite: Legacy Database &#8594; Database V2 (officialboomi-X3979C-dbv2da-prod)</text>
 
   <!-- Top Center: Boomi Agent UI (User & Web Dashboard) -->
   <g transform="translate(485, 30)">
@@ -144,7 +144,7 @@
   <g transform="translate(470, 126)">
     <rect x="0" y="0" width="765" height="225" rx="10" fill="#ffffff" stroke="#2563eb" stroke-width="2.5" />
     <text x="20" y="27" font-size="16" font-weight="800" fill="#2563eb">Knowledge-Base</text>
-    <text x="145" y="27" font-size="11" font-weight="600" fill="#64748b">&mdash; Hierarchical Subfolder Discovery &amp; Where-Used Dependency Engine</text>
+    <text x="145" y="27" font-size="11" font-weight="600" fill="#64748b">&#8212; Hierarchical Subfolder Discovery &amp; Where-Used Dependency Engine</text>
 
     <!-- Top Row: Discovery Pipeline -->
     <g transform="translate(30, 46)">
@@ -229,7 +229,7 @@
       </g>
     </g>
 
-    <text x="20" y="210" font-size="9.5" font-weight="600" fill="#2563eb">&bull; Discovers all 6 component tiers: Connections, Operations, Profiles, Maps, Caches, and DB Processes</text>
+    <text x="20" y="210" font-size="9.5" font-weight="600" fill="#2563eb">&#8226; Discovers all 6 component tiers: Connections, Operations, Profiles, Maps, Caches, and DB Processes</text>
   </g>
 
   <!-- ================= BOTTOM RIGHT: AI-REASONING (ORANGE BOX) ================= -->
@@ -237,7 +237,7 @@
   <g transform="translate(470, 368)">
     <rect x="0" y="0" width="765" height="355" rx="10" fill="#ffffff" stroke="#f97316" stroke-width="2.5" />
     <text x="20" y="28" font-size="16" font-weight="800" fill="#f97316">AI-Reasoning</text>
-    <text x="135" y="28" font-size="11" font-weight="600" fill="#64748b">&mdash; Database V2 Modernization Cycle (officialboomi-X3979C-dbv2da-prod)</text>
+    <text x="135" y="28" font-size="11" font-weight="600" fill="#64748b">&#8212; Database V2 Modernization Cycle (officialboomi-X3979C-dbv2da-prod)</text>
 
     <!-- Center Hub: Database V2 Modernization Engine -->
     <g transform="translate(382, 180)">
@@ -271,8 +271,8 @@
     <!-- Top-Right: Phase 2: Profile to JSON Synthesis -->
     <g transform="translate(625, 135)">
       <text x="0" y="12" font-size="22" text-anchor="middle">📄</text>
-      <text x="0" y="32" font-size="11" font-weight="800" fill="#0f172a" text-anchor="middle">2. Profile &rarr; JSON Synthesis</text>
-      <text x="0" y="46" font-size="9" font-weight="600" fill="#64748b" text-anchor="middle">profile.db &rarr; JSON Profiles</text>
+      <text x="0" y="32" font-size="11" font-weight="800" fill="#0f172a" text-anchor="middle">2. Profile &#8594; JSON Synthesis</text>
+      <text x="0" y="46" font-size="9" font-weight="600" fill="#64748b" text-anchor="middle">profile.db &#8594; JSON Profiles</text>
       <text x="0" y="58" font-size="8.5" font-weight="500" fill="#ea580c" text-anchor="middle">JSONRootValue &gt; Object &gt; Entries</text>
     </g>
     <!-- Arrow 2 -> 3 -->
