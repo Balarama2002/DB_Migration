@@ -173,8 +173,9 @@ def scan_components_stream(req: ScanRequest):
                     SCAN_RESULTS_CACHE[req.session_id] = entry
                 if req.account_id:
                     SCAN_RESULTS_CACHE[f"acc_{req.account_id}"] = entry
-                SCAN_RESULTS_CACHE["last"] = entry
-                q.put({"type": "complete", "results": results, "branch_name": client.branch_name, "branch_id": client.branch_id})
+                root_name = results.get("root_folder_name") or migrator.get_root_folder_name()
+                entry["root_folder_name"] = root_name
+                q.put({"type": "complete", "results": results, "root_folder_name": root_name, "branch_name": client.branch_name, "branch_id": client.branch_id})
             except Exception as e:
                 q.put({"type": "error", "error": str(e)})
 
@@ -237,6 +238,7 @@ def scan_components(creds: ScanRequest):
             "status": "success",
             "branch_name": client.branch_name,
             "branch_id": client.branch_id,
+            "root_folder_name": results.get("root_folder_name") or migrator.get_root_folder_name(),
             "connections": results.get("connections", []),
             "operations": results.get("operations", []),
             "profiles": results.get("profiles", []),

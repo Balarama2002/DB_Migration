@@ -510,6 +510,28 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         };
 
+        // Determine root folder dynamically from scan data or existing component paths
+        let defaultRoot = (data && data.root_folder_name) || 
+                          (typeof currentScanData !== 'undefined' && currentScanData && currentScanData.root_folder_name) || '';
+        if (!defaultRoot) {
+            const allItems = [
+                ...(data.connections || []),
+                ...(data.operations || []),
+                ...(data.profiles || []),
+                ...(data.maps || []),
+                ...(data.caches || []),
+                ...(data.processes || [])
+            ];
+            for (const item of allItems) {
+                const fp = (item.folderPath || '').trim().replace(/\\+/g, '/').replace(/\/+/g, '/');
+                if (fp && fp !== 'Root' && fp.includes('/')) {
+                    defaultRoot = fp.split('/')[0].trim();
+                    if (defaultRoot) break;
+                }
+            }
+        }
+        if (!defaultRoot) defaultRoot = 'Root';
+
         const addItems = (items, category) => {
             (items || []).forEach(item => {
                 let rawPath = (item.folderPath || item.folderName || '').trim();
@@ -519,9 +541,9 @@ document.addEventListener('DOMContentLoaded', () => {
                 if (rawPath.endsWith('/')) rawPath = rawPath.slice(0, -1);
                 
                 if (!rawPath || rawPath === 'Root') {
-                    rawPath = 'TGH';
-                } else if (rawPath !== 'TGH' && !rawPath.startsWith('TGH/')) {
-                    rawPath = 'TGH/' + rawPath;
+                    rawPath = defaultRoot;
+                } else if (defaultRoot !== 'Root' && rawPath !== defaultRoot && !rawPath.startsWith(defaultRoot + '/')) {
+                    rawPath = defaultRoot + '/' + rawPath;
                 }
 
                 const segments = rawPath.split('/');

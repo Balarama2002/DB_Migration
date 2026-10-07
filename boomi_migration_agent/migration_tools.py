@@ -16,6 +16,38 @@ class MigrationTools:
     def __init__(self, client: BoomiClient = None):
         self.client = client or BoomiClient()
         self.folders_cache = {}
+        self.root_folder_name = None
+        self.root_folder_names = []
+
+    def get_root_folder_name(self):
+        """Returns dynamically detected root folder name for the current Boomi account."""
+        if self.root_folder_name:
+            return self.root_folder_name
+        if not self.folders_cache:
+            self.preload_folders()
+        return self.root_folder_name or "Root"
+
+    def _normalize_path(self, raw_path: str) -> str:
+        """
+        Dynamically normalizes folder paths under the account's actual root folder.
+        Preserves existing multi-level paths and prevents hardcoding.
+        """
+        clean = (raw_path or "").replace("\\", "/").strip("/")
+        root_name = self.get_root_folder_name()
+        
+        if not clean or clean == "Root":
+            return root_name
+            
+        # Check if clean already starts with any identified root folder
+        for r in (self.root_folder_names or [root_name]):
+            if r and (clean == r or clean.startswith(f"{r}/")):
+                return clean
+                
+        if root_name and root_name != "Root":
+            if clean != root_name and not clean.startswith(f"{root_name}/"):
+                return f"{root_name}/{clean}"
+                
+        return clean
 
     def preload_folders(self):
         """Preloads all folders across the account in one paginated query so all components have instant fullPath resolution."""
@@ -23,13 +55,42 @@ class MigrationTools:
             return self.folders_cache
         try:
             folders = self.client.query("Folder", {})
+
+            # Step 1: Detect root folders dynamically from the account
+            # In Boomi, root folders have empty/null parentId or parentId == ''
+            root_candidates = [
+                f for f in folders 
+                if not (f.get("parentId") or "").strip() and not f.get("deleted", False)
+            ]
+            self.root_folder_names = [
+                (f.get("name") or f.get("fullPath") or "").strip() 
+                for f in root_candidates 
+                if (f.get("name") or f.get("fullPath") or "").strip()
+            ]
+            if self.root_folder_names:
+                self.root_folder_name = self.root_folder_names[0]
+                
+            # Fallback 1: Derive from top prefix of any existing folder's fullPath
+            if not self.root_folder_name:
+                for f in folders:
+                    fp = (f.get("fullPath") or "").replace("\\", "/").strip("/")
+                    if fp and not f.get("deleted", False):
+                        prefix = fp.split("/")[0].strip()
+                        if prefix and prefix not in self.root_folder_names:
+                            self.root_folder_names.append(prefix)
+                if self.root_folder_names:
+                    self.root_folder_name = self.root_folder_names[0]
+                    
+            # Fallback 2: Default if account has no folders
+            if not self.root_folder_name:
+                self.root_folder_name = "Root"
+                self.root_folder_names = ["Root"]
+
             for f in folders:
                 fid = f.get("id")
                 if fid:
-                    fpath = f.get("fullPath") or f.get("name") or "TGH"
-                    if fpath != "TGH" and not fpath.startswith("TGH/"):
-                        fpath = f"TGH/{fpath}"
-                    self.folders_cache[fid] = fpath
+                    fpath = f.get("fullPath") or f.get("name") or self.root_folder_name
+                    self.folders_cache[fid] = self._normalize_path(fpath)
         except Exception as e:
             print(f"Warning: preload_folders error: {e}")
         return self.folders_cache
@@ -39,12 +100,11 @@ class MigrationTools:
         if not self.folders_cache:
             self.preload_folders()
             
+        root_name = self.get_root_folder_name()
         for item in items:
             fid = item.get("folderId")
-            fpath = self.folders_cache.get(fid) or item.get("folderName") or "TGH"
-            if fpath != "TGH" and not fpath.startswith("TGH/"):
-                fpath = f"TGH/{fpath}"
-            item["folderPath"] = fpath
+            fpath = self.folders_cache.get(fid) or item.get("folderName") or root_name
+            item["folderPath"] = self._normalize_path(fpath)
             
         return self.folders_cache
 
@@ -113,9 +173,8 @@ class MigrationTools:
 
         # 2. Recursively gather all subfolder IDs and full paths
         all_target_folders = {target_root["id"]: target_root}
-        root_path = target_root.get("fullPath") or target_root.get("name") or "TGH"
-        if root_path != "TGH" and not root_path.startswith("TGH/"):
-            root_path = f"TGH/{root_path}"
+        root_path = target_root.get("fullPath") or target_root.get("name") or self.get_root_folder_name()
+        root_path = self._normalize_path(root_path)
         self.folders_cache[target_root["id"]] = root_path
 
         curr_ids = [target_root["id"]]
@@ -130,9 +189,8 @@ class MigrationTools:
                         sid = s.get("id")
                         if sid and sid not in all_target_folders:
                             all_target_folders[sid] = s
-                            fpath = s.get("fullPath") or s.get("name") or "TGH"
-                            if fpath != "TGH" and not fpath.startswith("TGH/"):
-                                fpath = f"TGH/{fpath}"
+                            fpath = s.get("fullPath") or s.get("name") or self.get_root_folder_name()
+                            fpath = self._normalize_path(fpath)
                             self.folders_cache[sid] = fpath
                             next_ids.append(sid)
                 except Exception as e:
@@ -238,12 +296,11 @@ class MigrationTools:
         legacy_processes = list(folder_procs.values())
 
         # Enrich all items with folderPath
+        root_name = self.get_root_folder_name()
         for item in (legacy_conns + legacy_opers + legacy_profiles + legacy_maps + legacy_caches + legacy_processes):
             fid = item.get("folderId")
-            fpath = self.folders_cache.get(fid) or item.get("folderName") or "TGH"
-            if fpath != "TGH" and not fpath.startswith("TGH/"):
-                fpath = f"TGH/{fpath}"
-            item["folderPath"] = fpath
+            fpath = self.folders_cache.get(fid) or item.get("folderName") or root_name
+            item["folderPath"] = self._normalize_path(fpath)
 
         if progress_callback:
             progress_callback("maps_caches", f"{len(legacy_maps)} Maps, {len(legacy_caches)} Caches", 1)
@@ -251,6 +308,7 @@ class MigrationTools:
 
         return {
             "target_folder": target_folder_name,
+            "root_folder_name": root_name,
             "connections": legacy_conns,
             "operations": legacy_opers,
             "profiles": legacy_profiles,
@@ -367,10 +425,8 @@ class MigrationTools:
                     best = next((x for x in items if x.get("deleted") is False), None) or items[0]
                 
                 fid = best.get("folderId")
-                fpath = self.folders_cache.get(fid) or best.get("folderName") or "TGH"
-                if fpath != "TGH" and not fpath.startswith("TGH/"):
-                    fpath = f"TGH/{fpath}"
-                best["folderPath"] = fpath
+                fpath = self.folders_cache.get(fid) or best.get("folderName") or self.get_root_folder_name()
+                best["folderPath"] = self._normalize_path(fpath)
                 resolved[cid] = best
 
         return resolved
@@ -419,7 +475,7 @@ class MigrationTools:
         2. Otherwise, preloads all account folders and fetches legacy DB Connections, Operations, and Profiles account-wide in parallel.
         3. Concurrently runs Maps/Caches discovery and DB Process discovery in PARALLEL.
         4. Queries transitive DB processes from discovered Maps and Caches.
-        5. Assigns exact hierarchical full folder paths under the single Main Folder 'TGH'.
+        5. Assigns exact hierarchical full folder paths under the dynamic account root folder.
         """
         raw_filter = (folder_filter or "").strip()
         if raw_filter:
@@ -511,19 +567,19 @@ class MigrationTools:
         # Assign full hierarchical folders
         self.resolve_folders_for_items(legacy_conns + legacy_opers + legacy_profiles + legacy_maps + legacy_caches + legacy_processes)
 
-        # Enrich all items with folderPath anchored under TGH
+        # Enrich all items with folderPath anchored under dynamic root folder
+        root_name = self.get_root_folder_name()
         for item in (legacy_conns + legacy_opers + legacy_profiles + legacy_maps + legacy_caches + legacy_processes):
             fid = item.get("folderId")
-            fpath = item.get("folderPath") or self.folders_cache.get(fid) or item.get("folderName") or "TGH"
-            if fpath != "TGH" and not fpath.startswith("TGH/"):
-                fpath = f"TGH/{fpath}"
-            item["folderPath"] = fpath
+            fpath = item.get("folderPath") or self.folders_cache.get(fid) or item.get("folderName") or root_name
+            item["folderPath"] = self._normalize_path(fpath)
 
         if progress_callback:
             progress_callback("maps_caches", f"{len(legacy_maps)} Maps, {len(legacy_caches)} Caches", 1)
             progress_callback("processes", f"{len(legacy_processes)} DB Processes", 1)
 
         return {
+            "root_folder_name": root_name,
             "connections": legacy_conns,
             "operations": legacy_opers,
             "profiles": legacy_profiles,
@@ -1406,12 +1462,10 @@ class MigrationTools:
         folder_tree_root = FolderNode("Root", "", "", 0)
         all_folder_nodes = {}
 
+        root_name = self.get_root_folder_name()
+
         def get_or_create_node(path_str):
-            norm = path_str.replace('\\', '/').strip('/')
-            if not norm or norm == "Root":
-                norm = "TGH"
-            elif norm != "TGH" and not norm.startswith("TGH/"):
-                norm = f"TGH/{norm}"
+            norm = self._normalize_path(path_str)
             if norm in all_folder_nodes:
                 return all_folder_nodes[norm]
 
@@ -1430,22 +1484,22 @@ class MigrationTools:
 
         # Place components
         for c in conns:
-            node = get_or_create_node(c.get("folderPath") or c.get("folderName") or "TGH")
+            node = get_or_create_node(c.get("folderPath") or c.get("folderName") or root_name)
             node.direct["conns"] += 1
         for o in opers:
-            node = get_or_create_node(o.get("folderPath") or o.get("folderName") or "TGH")
+            node = get_or_create_node(o.get("folderPath") or o.get("folderName") or root_name)
             node.direct["opers"] += 1
         for p in profs:
-            node = get_or_create_node(p.get("folderPath") or p.get("folderName") or "TGH")
+            node = get_or_create_node(p.get("folderPath") or p.get("folderName") or root_name)
             node.direct["profs"] += 1
         for m in maps:
-            node = get_or_create_node(m.get("folderPath") or m.get("folderName") or "TGH")
+            node = get_or_create_node(m.get("folderPath") or m.get("folderName") or root_name)
             node.direct["maps"] += 1
         for ca in caches:
-            node = get_or_create_node(ca.get("folderPath") or ca.get("folderName") or "TGH")
+            node = get_or_create_node(ca.get("folderPath") or ca.get("folderName") or root_name)
             node.direct["caches"] += 1
         for pr in procs:
-            node = get_or_create_node(pr.get("folderPath") or pr.get("folderName") or "TGH")
+            node = get_or_create_node(pr.get("folderPath") or pr.get("folderName") or root_name)
             node.direct["procs"] += 1
 
         # Post-order rollup calculation
@@ -1460,7 +1514,7 @@ class MigrationTools:
 
         calculate_node_rollups(folder_tree_root)
 
-        # Root folders: TGH is the top-level Main Folder
+        # Root folders: top-level Main Folders dynamically identified
         effective_roots = list(folder_tree_root.children.values())
 
         # Output in true hierarchical DFS order (Main Folder -> Subfolders -> Sub-subfolders)
